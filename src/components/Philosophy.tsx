@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -27,25 +27,13 @@ const statements = [
 const Philosophy = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
     <section className="relative bg-[#0a0a0a] overflow-hidden section-padding" ref={ref}>
-      {/* Elegant dark background with subtle gradients */}
+      {/* Static dark background with subtle gradients */}
       <div className="absolute inset-0">
-        <motion.div 
-          style={{ y: backgroundY }}
-          className="absolute top-1/4 left-1/3 w-[800px] h-[800px] bg-gradient-to-br from-accent/10 via-accent/5 to-transparent rounded-full blur-3xl" 
-        />
-        <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 50]) }}
-          className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-violet-500/8 to-transparent rounded-full blur-3xl" 
-        />
+        <div className="absolute top-1/4 left-1/3 w-[800px] h-[800px] bg-gradient-to-br from-accent/10 via-accent/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-violet-500/8 to-transparent rounded-full blur-3xl" />
       </div>
       
       {/* Subtle grid pattern */}

@@ -1,44 +1,19 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import heroVisual from "@/assets/hero-visual.png";
 
 const Hero = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const imageOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-
   return (
-    <section ref={ref} className="min-h-[100svh] relative overflow-hidden bg-background flex flex-col">
-      {/* Animated gradient bg with parallax */}
-      <motion.div 
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
-        className="absolute inset-0 bg-gradient-to-br from-accent/8 via-transparent to-background" 
-      />
+    <section className="min-h-[100svh] relative overflow-hidden bg-background flex flex-col">
+      {/* Static gradient bg */}
+      <div className="absolute inset-0 bg-gradient-to-br from-accent/8 via-transparent to-background" />
 
-      {/* Premium gradient orbs */}
-      <motion.div
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, 200]), opacity }}
-        className="absolute top-20 right-10 w-[500px] h-[500px] bg-gradient-to-br from-accent/10 to-accent/5 rounded-full blur-3xl"
-      />
-      <motion.div
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]), opacity }}
-        className="absolute bottom-40 left-10 w-96 h-96 bg-gradient-to-tr from-accent/5 to-transparent rounded-full blur-3xl"
-      />
+      {/* Static gradient orbs */}
+      <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-gradient-to-br from-accent/10 to-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-40 left-10 w-96 h-96 bg-gradient-to-tr from-accent/5 to-transparent rounded-full blur-3xl" />
 
-      <motion.div 
-        style={{ y, opacity, scale }}
-        className="section-container relative z-10 flex-1 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 pt-24 md:pt-32 pb-12"
-      >
+      <div className="section-container relative z-10 flex-1 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 pt-24 md:pt-32 pb-12">
         {/* Left Content */}
         <div className="flex-1">
           {/* Label */}
@@ -155,7 +130,6 @@ const Hero = () => {
 
         {/* Right Visual */}
         <motion.div 
-          style={{ y: imageY, opacity: imageOpacity }}
           initial={{ opacity: 0, scale: 0.9, x: 50 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -164,33 +138,27 @@ const Hero = () => {
           <div className="relative">
             {/* Glow effect behind image */}
             <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5 rounded-3xl blur-2xl scale-110" />
-            <motion.img 
+            <img 
               src={heroVisual} 
               alt="Wachstum und Skalierung Visualisierung" 
-              className="relative w-full h-auto rounded-2xl shadow-2xl"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              className="relative w-full h-auto rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+              loading="lazy"
             />
           </div>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        style={{ opacity }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2"
-        >
+        <div className="flex flex-col items-center gap-2 animate-bounce">
           <span className="text-xs text-foreground-muted uppercase tracking-wider">Scroll</span>
           <ArrowDown className="w-5 h-5 text-foreground-muted" />
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );
