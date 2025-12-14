@@ -69,7 +69,7 @@ const CaseStudies = () => {
               Case Files
             </motion.span>
             <h2 className="text-headline font-bold text-foreground mb-4">
-              Resultate. <span className="font-serif italic text-foreground/50">Keine Stories.</span>
+              Resultate. <span className="font-serif italic text-foreground-muted">Keine Stories.</span>
             </h2>
             <p className="text-foreground-muted max-w-lg">
               Echte Unternehmen. Echte Probleme. Echte Lösungen.

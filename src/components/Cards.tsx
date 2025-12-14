@@ -90,7 +90,7 @@ const Cards = () => {
             Warum Wachstum scheitert
           </motion.span>
           <h2 className="text-headline font-bold text-foreground">
-            Die <span className="font-serif italic text-foreground/50">echten</span> Probleme.
+            Die <span className="font-serif italic text-foreground-muted">echten</span> Probleme.
           </h2>
         </motion.div>
 
