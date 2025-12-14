@@ -1,9 +1,27 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { TrendingUp, Users, Zap, ArrowRight } from "lucide-react";
+import { TrendingUp, Users, Zap, ArrowRight, FileText, Sparkles, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const cards = [
+  {
+    icon: FileText,
+    label: "Sales",
+    headline: "Dein neues Verkaufsskript",
+    subline: "bringt dir nicht mehr Abschlüsse. Dein Prozess ist das Problem.",
+  },
+  {
+    icon: Sparkles,
+    label: "Design",
+    headline: "Canva Pro macht",
+    subline: "deine Ads nicht besser. Deine Message ist schwach.",
+  },
+  {
+    icon: Zap,
+    label: "KI",
+    headline: "ChatGPT schreibt",
+    subline: "keine besseren Mails. Du weißt nicht, was du sagen willst.",
+  },
   {
     icon: TrendingUp,
     label: "Wachstum",
@@ -13,14 +31,14 @@ const cards = [
   {
     icon: Users,
     label: "Recruiting",
-    headline: "Wenn du keine Leute findest,",
-    subline: "liegt das selten am Markt.",
+    headline: "LinkedIn Premium",
+    subline: "findet dir keine Talente. Dein Angebot lockt niemanden.",
   },
   {
-    icon: Zap,
-    label: "Automatisierung",
-    headline: "Manuelle Arbeit ist ein Symptom.",
-    subline: "Kein Zustand.",
+    icon: Target,
+    label: "Marketing",
+    headline: "Mehr Budget bedeutet",
+    subline: "mehr Verlust. Wenn die Grundlage nicht stimmt.",
   },
 ];
 
@@ -64,7 +82,7 @@ const Cards = () => {
         </motion.div>
 
         {/* Cards Grid with staggered reveal */}
-        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-14">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-14">
           {cards.map((card, index) => (
             <CardItem key={card.label} card={card} index={index} isInView={isInView} />
           ))}
