@@ -12,7 +12,7 @@ const caseStudies = [
     industry: "Inkasso",
     situation: "Manuelle Abläufe, unklare Zuständigkeiten.",
     implementation: "Prozessautomatisierung, klare Workflows, Reporting.",
-    result: "Mehr Fälle mit weniger Aufwand. Bessere Übersicht.",
+    result: "Mehr Fälle mit weniger Aufwand.",
   },
   {
     industry: "Dubai-Immobilien",
@@ -47,76 +47,65 @@ const CaseStudies = () => {
   };
 
   return (
-    <section id="referenzen" className="relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-background-pure" />
-      
-      {/* Decorative gradient */}
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-accent/50 to-transparent opacity-50" />
-
-      <div className="section-container section-padding relative z-10">
+    <section id="referenzen" className="relative overflow-hidden bg-background-soft section-padding" ref={ref}>
+      <div className="section-container">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <motion.span
-            variants={itemVariants}
-            className="text-xs text-foreground/40 uppercase tracking-[0.2em] mb-6 block font-body"
-          >
-            Referenzen
-          </motion.span>
-          
-          <motion.h2
-            variants={itemVariants}
-            className="font-heading text-[clamp(2rem,4vw,3.5rem)] text-foreground mb-20 max-w-2xl leading-[1.1]"
-          >
-            Konkrete Ergebnisse
-          </motion.h2>
+          <motion.div variants={itemVariants} className="mb-16">
+            <span className="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-4 block">
+              Referenzen
+            </span>
+            <h2 className="font-heading text-headline text-foreground max-w-2xl">
+              Konkrete Ergebnisse
+            </h2>
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
             {caseStudies.map((study) => (
               <motion.div
                 key={study.industry}
                 variants={itemVariants}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="group relative"
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="group"
               >
-                <div className="h-full p-8 md:p-10 rounded-2xl bg-background border border-border/50 hover:border-border hover:shadow-xl hover:shadow-foreground/5 transition-all duration-500">
-                  {/* Industry label */}
-                  <div className="mb-8">
-                    <span className="text-xs text-foreground/40 uppercase tracking-[0.15em] font-body">
+                <div className="premium-card h-full transition-all duration-500 border border-transparent group-hover:border-accent/30">
+                  {/* Industry header */}
+                  <div className="mb-8 pb-6 border-b border-border">
+                    <span className="text-xs text-foreground-muted uppercase tracking-[0.15em] block mb-2">
                       Branche
                     </span>
-                    <p className="font-heading text-2xl text-foreground mt-2">
+                    <p className="font-heading text-3xl text-foreground">
                       {study.industry}
                     </p>
                   </div>
 
                   <div className="space-y-6">
                     <div>
-                      <span className="text-xs text-foreground/40 uppercase tracking-[0.15em] font-body block mb-2">
+                      <span className="text-xs text-foreground-muted uppercase tracking-[0.15em] block mb-2">
                         Ausgangslage
                       </span>
-                      <p className="text-foreground/60 leading-relaxed">
+                      <p className="text-foreground-muted leading-relaxed">
                         {study.situation}
                       </p>
                     </div>
                     
                     <div>
-                      <span className="text-xs text-foreground/40 uppercase tracking-[0.15em] font-body block mb-2">
+                      <span className="text-xs text-foreground-muted uppercase tracking-[0.15em] block mb-2">
                         Umsetzung
                       </span>
-                      <p className="text-foreground/60 leading-relaxed">
+                      <p className="text-foreground-muted leading-relaxed">
                         {study.implementation}
                       </p>
                     </div>
                     
-                    <div className="pt-6 border-t border-border/50">
-                      <span className="text-xs text-foreground/40 uppercase tracking-[0.15em] font-body block mb-2">
+                    <div className="pt-6 border-t border-border">
+                      <span className="text-xs text-accent uppercase tracking-[0.15em] block mb-2 font-semibold">
                         Ergebnis
                       </span>
-                      <p className="text-foreground/80 font-medium leading-relaxed">
+                      <p className="text-foreground font-medium leading-relaxed text-lg">
                         {study.result}
                       </p>
                     </div>
