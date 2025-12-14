@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import skalatorLogo from "@/assets/skalator-logo.png";
 
 const GOOGLE_CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1J8LB-Qt3tzOmUygFk9PqamtOzvM1qo1PxXQxiodbMZBa41kcDQfFBhXAH0YwOoR_0uWt4tmpe";
 
@@ -14,8 +15,8 @@ const Header = () => {
     >
       <div className="section-container">
         <nav className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="font-display text-xl md:text-2xl tracking-tight text-foreground font-bold">
-            SKALATOR
+          <a href="#" className="flex items-center">
+            <img src={skalatorLogo} alt="Skalator Logo" className="h-10 md:h-12 w-auto" />
           </a>
           
           <div className="flex items-center gap-4">
