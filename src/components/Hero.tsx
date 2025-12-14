@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowDown } from "lucide-react";
-import heroVisual from "@/assets/hero-visual.png";
+import heroBotan from "@/assets/hero-botan.png";
 
 const Hero = memo(() => {
   return (
@@ -140,11 +140,11 @@ const Hero = memo(() => {
             {/* Glow effect behind image */}
             <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5 rounded-3xl blur-2xl scale-110" />
             <img 
-              src={heroVisual} 
-              alt="Wachstum und Skalierung Visualisierung - 3D Grafik mit aufsteigenden Balken" 
-              className="relative w-full h-auto rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+              src={heroBotan} 
+              alt="Botan Barwary - Growth Operator und Gründer von Skalator" 
+              className="relative w-full h-auto rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform duration-300 object-cover"
               width="600"
-              height="400"
+              height="750"
               loading="eager"
               decoding="async"
               fetchPriority="high"
