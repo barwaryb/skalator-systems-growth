@@ -1,22 +1,28 @@
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
-import { TrendingUp, Users, Cog } from "lucide-react";
+import { TrendingUp, Users, Zap } from "lucide-react";
 
 const services = [
   {
     icon: TrendingUp,
-    title: "Wachstumssysteme",
-    description: "Mehr qualifizierte Anfragen. Klare Vertriebsstrukturen. Planbare Umsätze.",
+    title: "Wachstum",
+    subtitle: "Marketing & Umsatz",
+    description: "Qualifizierte Anfragen. Klare Strukturen. Planbare Umsätze.",
+    accent: true,
   },
   {
     icon: Users,
-    title: "Recruiting-Strukturen",
-    description: "Planbare Mitarbeitergewinnung. Saubere Prozesse. Die richtigen Menschen.",
+    title: "Recruiting",
+    subtitle: "Team & Kultur",
+    description: "Die richtigen Menschen. Zur richtigen Zeit. Mit System.",
+    accent: false,
   },
   {
-    icon: Cog,
+    icon: Zap,
     title: "Automatisierung",
-    description: "Weniger manuelle Arbeit. Klare Abläufe. Prozesse, die ohne Sie laufen.",
+    subtitle: "Prozesse & Tools",
+    description: "Weniger manuelle Arbeit. Mehr Zeit für das Wesentliche.",
+    accent: false,
   },
 ];
 
@@ -45,45 +51,64 @@ const Cards = () => {
   };
 
   return (
-    <section className="relative bg-background-soft section-padding" ref={ref}>
+    <section id="leistungen" className="relative bg-background-soft section-padding noise" ref={ref}>
       <div className="section-container">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-4 block">
-              Leistungen
+          {/* Header */}
+          <motion.div variants={itemVariants} className="mb-16 md:mb-24">
+            <span className="text-accent text-sm font-semibold uppercase tracking-[0.2em] mb-4 block">
+              Was ich mache
             </span>
-            <h2 className="font-heading text-headline text-foreground">
-              Drei Hebel für Wachstum
+            <h2 className="font-heading text-headline text-foreground max-w-4xl">
+              Drei Hebel.
+              <span className="text-foreground/30"> Ein Ziel.</span>
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {services.map((service) => (
+          {/* Bento grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {services.map((service, index) => (
               <motion.div
                 key={service.title}
                 variants={itemVariants}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group"
+                className={`group relative ${index === 0 ? 'md:col-span-2 lg:col-span-1 lg:row-span-2' : ''}`}
               >
-                <div className="premium-card h-full transition-all duration-500 relative overflow-hidden">
-                  {/* Accent corner */}
-                  <div className="absolute top-0 left-0 w-1 h-16 bg-accent rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
-                    <service.icon className="w-7 h-7 text-accent" strokeWidth={1.5} />
+                <div className={`gradient-border h-full p-8 md:p-10 transition-all duration-500 ${
+                  index === 0 ? 'lg:p-12' : ''
+                }`}>
+                  {/* Icon */}
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
+                    service.accent 
+                      ? 'bg-accent text-accent-foreground' 
+                      : 'bg-secondary group-hover:bg-accent group-hover:text-accent-foreground'
+                  }`}>
+                    <service.icon className="w-7 h-7" strokeWidth={1.5} />
                   </div>
                   
-                  <h3 className="font-heading text-2xl text-foreground mb-4">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-foreground-muted leading-relaxed">
-                    {service.description}
-                  </p>
+                  {/* Content */}
+                  <div className="space-y-3">
+                    <span className="text-xs text-foreground-muted uppercase tracking-wider">
+                      {service.subtitle}
+                    </span>
+                    <h3 className={`font-heading text-foreground ${
+                      index === 0 ? 'text-4xl lg:text-5xl' : 'text-3xl'
+                    }`}>
+                      {service.title}
+                    </h3>
+                    <p className={`text-foreground-muted leading-relaxed ${
+                      index === 0 ? 'text-lg' : ''
+                    }`}>
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Hover accent line */}
+                  <div className="absolute bottom-0 left-8 right-8 h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
               </motion.div>
             ))}

@@ -27,49 +27,58 @@ const CallToAction = () => {
   };
 
   return (
-    <section id="kontakt" className="relative overflow-hidden bg-background section-padding" ref={ref}>
-      <div className="absolute inset-0 grid-pattern opacity-50" />
+    <section id="kontakt" className="relative overflow-hidden bg-background-soft section-padding noise" ref={ref}>
+      {/* Accent glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent/20 blur-[120px] rounded-full" />
       
       <div className="section-container relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center"
         >
           <motion.span
             variants={itemVariants}
             className="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-6 block"
           >
-            Kontakt
+            Nächster Schritt
           </motion.span>
 
           <motion.h2
             variants={itemVariants}
-            className="font-heading text-headline text-foreground mb-8"
+            className="font-heading text-headline text-foreground mb-6"
           >
-            Wenn Sie wachsen wollen,
-            <br />
-            <span className="text-foreground/40">lassen Sie uns sprechen.</span>
+            Bereit zu wachsen?
           </motion.h2>
           
-          <motion.div
+          <motion.p
             variants={itemVariants}
-            className="text-xl text-foreground-muted mb-12 space-y-1"
+            className="text-xl text-foreground-muted mb-4"
           >
-            <p>Kein Pitch.</p>
-            <p>Kein Druck.</p>
-            <p>Nur Klarheit.</p>
-          </motion.div>
+            Kein Pitch. Kein Druck.
+          </motion.p>
+          
+          <motion.p
+            variants={itemVariants}
+            className="text-2xl text-foreground font-medium mb-12"
+          >
+            Nur Klarheit.
+          </motion.p>
           
           <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button variant="accent" size="premium-lg" asChild>
+            <Button variant="accent" size="2xl" asChild className="glow-accent">
               <a href="mailto:kontakt@skalator.de" className="flex items-center gap-3">
                 Gespräch vereinbaren
-                <span className="text-xl">→</span>
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
               </a>
             </Button>
           </motion.div>
@@ -78,10 +87,9 @@ const CallToAction = () => {
             variants={itemVariants}
             className="mt-12"
           >
-            <p className="text-sm text-foreground-muted mb-2">Oder schreiben Sie direkt an</p>
             <a
               href="mailto:kontakt@skalator.de"
-              className="text-lg text-foreground hover:text-accent transition-colors duration-300 font-medium"
+              className="text-foreground-muted hover:text-accent transition-colors duration-300 text-lg"
             >
               kontakt@skalator.de
             </a>

@@ -1,6 +1,5 @@
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
-import heroImage from "@/assets/hero-image.jpg";
 
 const About = () => {
   const ref = useRef(null);
@@ -35,23 +34,36 @@ const About = () => {
           animate={isInView ? "visible" : "hidden"}
           className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center"
         >
-          {/* Image */}
+          {/* Left - Visual element */}
           <motion.div
             variants={itemVariants}
             className="relative"
           >
-            <div className="aspect-[4/5] rounded-3xl overflow-hidden">
-              <img
-                src={heroImage}
-                alt="Botan Barwary"
-                className="w-full h-full object-cover"
-              />
+            <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/20 via-background-card to-accent/5 p-1">
+              <div className="w-full h-full rounded-3xl bg-background-card flex items-center justify-center relative overflow-hidden">
+                {/* Abstract visual */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.div
+                    className="w-48 h-48 rounded-full bg-accent/20 blur-3xl"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  />
+                </div>
+                <span className="font-heading text-[12rem] font-bold text-foreground/5 select-none">
+                  BB
+                </span>
+              </div>
             </div>
-            {/* Decorative elements */}
-            <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-accent/30 rounded-3xl -z-10" />
+            
+            {/* Floating accent */}
+            <motion.div
+              className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent rounded-2xl"
+              animate={{ rotate: [0, 5, 0] }}
+              transition={{ duration: 6, repeat: Infinity }}
+            />
           </motion.div>
 
-          {/* Content */}
+          {/* Right - Content */}
           <div>
             <motion.span
               variants={itemVariants}
@@ -62,36 +74,36 @@ const About = () => {
             
             <motion.h2
               variants={itemVariants}
-              className="font-heading text-headline text-foreground mb-6"
+              className="font-heading text-title text-foreground mb-6"
             >
               Botan Barwary
             </motion.h2>
 
             <motion.p
               variants={itemVariants}
-              className="text-xl text-foreground-muted mb-8"
+              className="text-lg text-foreground-muted mb-8"
             >
               Growth Operator · Systemarchitekt · Sparringspartner
             </motion.p>
 
             <motion.div
               variants={containerVariants}
-              className="space-y-6 text-lg text-foreground-muted leading-relaxed"
+              className="space-y-6 text-foreground-muted leading-relaxed"
             >
               <motion.p variants={itemVariants}>
                 Ich bin kein Berater, der Strategien schreibt und dann geht.
               </motion.p>
-              <motion.p variants={itemVariants} className="text-foreground font-medium">
+              <motion.p variants={itemVariants} className="text-foreground text-xl font-medium">
                 Ich baue Systeme. Und ich setze sie um.
               </motion.p>
               <motion.p variants={itemVariants}>
-                Meine Erfahrung: Marketing und Prozessautomatisierung in einem Immobilienunternehmen. 
-                Recruiting-Systeme. End-to-End-Systeme für ein Inkasso-Unternehmen. 
-                Ads, Websites und Lead-Systeme für Dubai-Immobilien.
+                Immobilienunternehmen. Inkasso. Dubai-Immobilien. 
+                Überall dasselbe Prinzip: Klare Strukturen schaffen, die ohne mich funktionieren.
               </motion.p>
               <motion.p variants={itemVariants}>
-                Was mich unterscheidet: Ich übernehme Verantwortung.
-                Nicht für Präsentationen. Sondern für Ergebnisse.
+                Was mich unterscheidet?{" "}
+                <span className="text-accent font-medium">Verantwortung für Ergebnisse.</span>{" "}
+                Nicht für Präsentationen.
               </motion.p>
             </motion.div>
           </div>

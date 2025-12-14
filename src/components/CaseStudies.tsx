@@ -1,24 +1,25 @@
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const caseStudies = [
   {
+    number: "01",
     industry: "Immobilien",
-    situation: "Unregelmäßige Anfragen, keine Struktur im Vertrieb.",
-    implementation: "Ads-System, automatisierte Lead-Qualifizierung, CRM-Prozess.",
-    result: "Planbare Anfragen. Deutlich weniger Zeitverlust.",
+    result: "Planbare Anfragen",
+    description: "Von unregelmäßigen Leads zu einem System, das täglich qualifizierte Anfragen liefert.",
   },
   {
+    number: "02",
     industry: "Inkasso",
-    situation: "Manuelle Abläufe, unklare Zuständigkeiten.",
-    implementation: "Prozessautomatisierung, klare Workflows, Reporting.",
-    result: "Mehr Fälle mit weniger Aufwand.",
+    result: "+40% Effizienz",
+    description: "Automatisierte Workflows. Klare Zuständigkeiten. Mehr Fälle, weniger Aufwand.",
   },
   {
-    industry: "Dubai-Immobilien",
-    situation: "Fehlende Online-Präsenz, keine Lead-Generierung.",
-    implementation: "Website, Ads-Kampagnen, Lead-Funnel.",
-    result: "Kontinuierlicher Strom qualifizierter Anfragen.",
+    number: "03",
+    industry: "Dubai Real Estate",
+    result: "Kontinuierliche Leads",
+    description: "Vom Null-Präsenz zum funktionierenden Lead-Funnel in 8 Wochen.",
   },
 ];
 
@@ -47,67 +48,66 @@ const CaseStudies = () => {
   };
 
   return (
-    <section id="referenzen" className="relative overflow-hidden bg-background-soft section-padding" ref={ref}>
+    <section id="referenzen" className="relative overflow-hidden bg-background-soft section-padding noise" ref={ref}>
       <div className="section-container">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <motion.div variants={itemVariants} className="mb-16">
+          <motion.div variants={itemVariants} className="mb-16 md:mb-24">
             <span className="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-4 block">
-              Referenzen
+              Resultate
             </span>
-            <h2 className="font-heading text-headline text-foreground max-w-2xl">
-              Konkrete Ergebnisse
+            <h2 className="font-heading text-headline text-foreground">
+              Konkret.
+              <span className="text-foreground/30"> Messbar.</span>
             </h2>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="space-y-4">
             {caseStudies.map((study) => (
               <motion.div
-                key={study.industry}
+                key={study.number}
                 variants={itemVariants}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                whileHover={{ x: 8 }}
                 className="group"
               >
-                <div className="premium-card h-full transition-all duration-500 border border-transparent group-hover:border-accent/30">
-                  {/* Industry header */}
-                  <div className="mb-8 pb-6 border-b border-border">
-                    <span className="text-xs text-foreground-muted uppercase tracking-[0.15em] block mb-2">
-                      Branche
-                    </span>
-                    <p className="font-heading text-3xl text-foreground">
-                      {study.industry}
-                    </p>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div>
-                      <span className="text-xs text-foreground-muted uppercase tracking-[0.15em] block mb-2">
-                        Ausgangslage
+                <div className="gradient-border p-8 md:p-10 transition-all duration-500 cursor-pointer">
+                  <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-center">
+                    {/* Number */}
+                    <div className="md:col-span-1">
+                      <span className="text-sm text-foreground-muted font-mono">
+                        {study.number}
                       </span>
-                      <p className="text-foreground-muted leading-relaxed">
-                        {study.situation}
-                      </p>
                     </div>
                     
-                    <div>
-                      <span className="text-xs text-foreground-muted uppercase tracking-[0.15em] block mb-2">
-                        Umsetzung
-                      </span>
-                      <p className="text-foreground-muted leading-relaxed">
-                        {study.implementation}
-                      </p>
+                    {/* Industry */}
+                    <div className="md:col-span-3">
+                      <h3 className="font-heading text-2xl md:text-3xl text-foreground group-hover:text-accent transition-colors duration-300">
+                        {study.industry}
+                      </h3>
                     </div>
                     
-                    <div className="pt-6 border-t border-border">
-                      <span className="text-xs text-accent uppercase tracking-[0.15em] block mb-2 font-semibold">
-                        Ergebnis
-                      </span>
-                      <p className="text-foreground font-medium leading-relaxed text-lg">
+                    {/* Result */}
+                    <div className="md:col-span-3">
+                      <span className="text-xl text-accent font-semibold">
                         {study.result}
+                      </span>
+                    </div>
+                    
+                    {/* Description */}
+                    <div className="md:col-span-4">
+                      <p className="text-foreground-muted leading-relaxed">
+                        {study.description}
                       </p>
+                    </div>
+                    
+                    {/* Arrow */}
+                    <div className="md:col-span-1 flex justify-end">
+                      <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-300">
+                        <ArrowUpRight className="w-5 h-5 text-foreground-muted group-hover:text-accent-foreground transition-colors" />
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -1,124 +1,168 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen relative overflow-hidden bg-background">
-      {/* Grid pattern background */}
-      <div className="absolute inset-0 grid-pattern" />
-      
+    <section className="min-h-screen relative overflow-hidden bg-background noise">
+      {/* Animated gradient orbs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] gradient-orb opacity-60"
+          animate={{ 
+            x: [0, 100, -50, 0],
+            y: [0, -80, 40, 0],
+            scale: [1, 1.2, 0.9, 1],
+          }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] gradient-orb opacity-40"
+          animate={{ 
+            x: [0, -80, 60, 0],
+            y: [0, 60, -40, 0],
+            scale: [1, 0.9, 1.1, 1],
+          }}
+          transition={{ 
+            duration: 25, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 2 
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 right-1/3 w-[400px] h-[400px] gradient-orb opacity-30"
+          animate={{ 
+            x: [0, 40, -60, 0],
+            y: [0, -50, 30, 0],
+          }}
+          transition={{ 
+            duration: 18, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 4 
+          }}
+        />
+      </div>
+
+      {/* Grid overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '100px 100px'
+        }}
+      />
+
       <div className="section-container relative z-10">
-        <div className="min-h-screen grid lg:grid-cols-2 gap-8 lg:gap-16 items-center pt-24 pb-16">
-          {/* Text content */}
-          <div className="order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-8"
-            >
-              <span className="inline-flex items-center gap-3 text-sm text-foreground-muted font-body tracking-wide">
-                <span className="w-12 h-px bg-accent" />
-                Growth Operator
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-heading text-display font-semibold text-foreground mb-8"
-            >
-              Ich baue
-              <br />
-              <span className="relative">
-                Systeme
-                <span className="absolute bottom-[0.1em] left-0 right-0 h-[0.12em] bg-accent -z-10" />
-              </span>
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-subheadline text-foreground-muted mb-4 max-w-lg leading-relaxed"
-            >
-              Die Unternehmen wachsen lassen.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-2 text-lg text-foreground-muted/80 mb-12"
-            >
-              <p>Ohne Chaos.</p>
-              <p>Ohne Agentur-Abhängigkeit.</p>
-              <p>Ohne Rätselraten.</p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Button variant="accent" size="premium" asChild>
-                <a href="#kontakt" className="flex items-center gap-3">
-                  Gespräch vereinbaren
-                  <span className="text-xl">→</span>
-                </a>
-              </Button>
-              <Button variant="premium-outline" size="premium" asChild>
-                <a href="#leistungen">Wie ich arbeite</a>
-              </Button>
-            </motion.div>
-          </div>
-
-          {/* Hero image */}
+        <div className="min-h-screen flex flex-col justify-center pt-20 pb-12">
+          {/* Label */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="order-1 lg:order-2 relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-8"
           >
-            <div className="relative aspect-[4/3] lg:aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl shadow-foreground/10">
-              <img
-                src={heroImage}
-                alt="Premium business environment"
-                className="w-full h-full object-cover"
-              />
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 to-transparent" />
+            <span className="inline-flex items-center gap-3 text-sm text-accent font-medium tracking-wide uppercase">
+              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+              Growth Operator · DACH
+            </span>
+          </motion.div>
+
+          {/* Main headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="font-heading text-display font-bold text-foreground mb-6"
+          >
+            Ich baue
+          </motion.h1>
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="font-heading text-display font-bold mb-12"
+          >
+            <span className="text-accent">Systeme</span>
+            <span className="text-foreground/30">.</span>
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="max-w-2xl mb-12"
+          >
+            <p className="text-xl md:text-2xl text-foreground-muted leading-relaxed">
+              Die Unternehmen wachsen lassen.
+              <span className="text-foreground/30"> Ohne Chaos. Ohne Agentur-Abhängigkeit.</span>
+            </p>
+          </motion.div>
+          
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <Button variant="accent" size="2xl" asChild>
+              <a href="#kontakt" className="flex items-center gap-3">
+                Gespräch vereinbaren
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </a>
+            </Button>
+            <Button variant="glass" size="2xl" asChild>
+              <a href="#leistungen">Wie ich arbeite</a>
+            </Button>
+          </motion.div>
+
+          {/* Stats bar */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="mt-20 pt-8 border-t border-border/30"
+          >
+            <div className="flex flex-wrap gap-12 md:gap-20">
+              {[
+                { value: "5+", label: "Jahre" },
+                { value: "20+", label: "Systeme" },
+                { value: "100%", label: "Fokus" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.2 + i * 0.1 }}
+                >
+                  <span className="block text-4xl md:text-5xl font-heading font-bold text-foreground mb-1">
+                    {stat.value}
+                  </span>
+                  <span className="text-sm text-foreground-muted uppercase tracking-wider">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
             </div>
-            
-            {/* Decorative accent */}
-            <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-accent rounded-2xl -z-10" />
-            <div className="absolute -top-6 -right-6 w-16 h-16 border-2 border-accent rounded-2xl" />
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 rounded-full border-2 border-foreground/20 flex items-start justify-center p-2"
-        >
-          <motion.div
-            animate={{ height: ["20%", "40%", "20%"] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-0.5 bg-foreground/30 rounded-full"
-          />
-        </motion.div>
-      </motion.div>
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };
