@@ -1,102 +1,152 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { TrendingUp, Users, Zap, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const cards = [
   {
-    number: "01",
-    headline: "Wachstum",
-    statement: "Mehr Leads lösen nichts, wenn dein System sie nicht tragen kann.",
+    icon: TrendingUp,
+    label: "Wachstum",
+    headline: "Mehr Leads lösen nichts,",
+    subline: "wenn dein System sie nicht tragen kann.",
   },
   {
-    number: "02",
-    headline: "Recruiting",
-    statement: "Wenn du keine Leute findest, liegt das selten am Markt.",
+    icon: Users,
+    label: "Recruiting",
+    headline: "Wenn du keine Leute findest,",
+    subline: "liegt das selten am Markt.",
   },
   {
-    number: "03",
-    headline: "Automatisierung",
-    statement: "Manuelle Arbeit ist ein Symptom. Kein Zustand.",
+    icon: Zap,
+    label: "Automatisierung",
+    headline: "Manuelle Arbeit ist ein Symptom.",
+    subline: "Kein Zustand.",
   },
 ];
 
 const Cards = () => {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-
-  return (
-    <section className="relative bg-background-soft section-padding" ref={containerRef}>
-      {/* Section divider */}
-      <div className="absolute top-0 left-0 right-0 h-2 bg-foreground" />
-
-      <div className="section-container">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="mb-16 md:mb-24"
-        >
-          <span className="text-sm font-bold text-accent uppercase tracking-[0.2em] mb-4 block">
-            Realität
-          </span>
-          <h2 className="font-display text-large text-foreground">
-            Was niemand
-            <br />
-            <span className="text-foreground/30">hören will.</span>
-          </h2>
-        </motion.div>
-
-        {/* Cards */}
-        <div className="space-y-6">
-          {cards.map((card, index) => (
-            <CardItem key={card.number} card={card} index={index} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const CardItem = ({ card, index }: { card: typeof cards[0]; index: number }) => {
   const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
-  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], [-1, 0, 1]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  return (
+    <section id="leistungen" className="relative bg-background-soft section-padding overflow-hidden" ref={ref}>
+      {/* Parallax background element */}
+      <motion.div 
+        style={{ y: backgroundY }}
+        className="absolute -top-20 -right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+      />
+
+      <div className="section-container relative z-10">
+        {/* Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-10 md:mb-14"
+        >
+          <motion.span 
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-xs md:text-sm font-semibold text-accent tracking-wide uppercase mb-3 block"
+          >
+            Warum Wachstum scheitert
+          </motion.span>
+          <h2 className="text-headline font-bold text-foreground">
+            Die echten Probleme.
+          </h2>
+        </motion.div>
+
+        {/* Cards Grid with staggered reveal */}
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-14">
+          {cards.map((card, index) => (
+            <CardItem key={card.label} card={card} index={index} isInView={isInView} />
+          ))}
+        </div>
+
+        {/* CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-center"
+        >
+          <Button variant="accent" size="lg" asChild>
+            <a href="#kontakt" className="flex items-center gap-2">
+              Problem lösen
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: number; isInView: boolean }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "center center"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const rotateX = useTransform(scrollYProgress, [0, 1], [15, 0]);
 
   return (
     <motion.div
       ref={ref}
-      style={{ y, scale, rotateZ: rotate }}
-      className="relative"
+      style={{ y, opacity, rotateX, transformPerspective: 1000 }}
+      whileHover={{ y: -8, transition: { duration: 0.3 } }}
+      className="modern-card p-6 md:p-8 group cursor-pointer"
     >
-      <div className="hard-card p-8 md:p-12 lg:p-16 group hover:bg-foreground hover:text-primary-foreground transition-all duration-500">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-16">
-          {/* Number */}
-          <div className="flex-shrink-0">
-            <span className="text-6xl md:text-8xl font-display text-foreground/10 group-hover:text-primary-foreground/20 transition-colors">
-              {card.number}
-            </span>
-          </div>
+      {/* Icon with pulse on hover */}
+      <motion.div 
+        whileHover={{ scale: 1.1 }}
+        className="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-5 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300"
+      >
+        <card.icon className="w-5 h-5" strokeWidth={2} />
+      </motion.div>
 
-          {/* Content */}
-          <div className="flex-1">
-            <h3 className="font-display text-3xl md:text-5xl text-foreground group-hover:text-primary-foreground mb-4 transition-colors">
-              {card.headline}
-            </h3>
-            <p className="text-xl md:text-2xl text-foreground-muted group-hover:text-primary-foreground/70 font-medium transition-colors">
-              {card.statement}
-            </p>
-          </div>
+      {/* Label */}
+      <span className="text-xs font-semibold text-accent tracking-wide uppercase mb-3 block">
+        {card.label}
+      </span>
 
-          {/* Accent line */}
-          <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" />
-        </div>
-      </div>
+      {/* Content */}
+      <h3 className="text-title font-bold text-foreground mb-1">
+        {card.headline}
+      </h3>
+      <p className="text-body-lg text-foreground-muted">
+        {card.subline}
+      </p>
+
+      {/* Hover reveal CTA */}
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        whileHover={{ opacity: 1, y: 0 }}
+        className="mt-5 opacity-0 group-hover:opacity-100 transition-all duration-300"
+      >
+        <span className="text-sm font-semibold text-accent flex items-center gap-1">
+          Mehr erfahren
+          <ArrowRight className="w-4 h-4" />
+        </span>
+      </motion.div>
+
+      {/* Animated border on hover */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent origin-left"
+        initial={{ scaleX: 0 }}
+        whileHover={{ scaleX: 1 }}
+        transition={{ duration: 0.3 }}
+      />
     </motion.div>
   );
 };
