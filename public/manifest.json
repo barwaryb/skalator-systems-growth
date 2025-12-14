@@ -1,0 +1,21 @@
+{
+  "name": "Skalator - Business Skalierung & Automatisierung",
+  "short_name": "Skalator",
+  "description": "Business Skalierung & Automatisierung für Unternehmer. Planbar wachsen durch klare Systeme.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "de",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

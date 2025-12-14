@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import heroVisual from "@/assets/hero-visual.png";
 
-const Hero = () => {
+const Hero = memo(() => {
   return (
-    <section className="min-h-[100svh] relative overflow-hidden bg-background flex flex-col">
+    <section className="min-h-[100svh] relative overflow-hidden bg-background flex flex-col" aria-label="Hero Bereich">
       {/* Static gradient bg */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/8 via-transparent to-background" />
+      <div className="absolute inset-0 bg-gradient-to-br from-accent/8 via-transparent to-background will-change-auto" />
 
-      {/* Static gradient orbs */}
-      <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-gradient-to-br from-accent/10 to-accent/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-40 left-10 w-96 h-96 bg-gradient-to-tr from-accent/5 to-transparent rounded-full blur-3xl" />
+      {/* Static gradient orbs - using CSS instead of JS */}
+      <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-gradient-to-br from-accent/10 to-accent/5 rounded-full blur-3xl will-change-auto" />
+      <div className="absolute bottom-40 left-10 w-96 h-96 bg-gradient-to-tr from-accent/5 to-transparent rounded-full blur-3xl will-change-auto" />
 
       <div className="section-container relative z-10 flex-1 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 pt-24 md:pt-32 pb-12">
         {/* Left Content */}
@@ -140,9 +141,13 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5 rounded-3xl blur-2xl scale-110" />
             <img 
               src={heroVisual} 
-              alt="Wachstum und Skalierung Visualisierung" 
+              alt="Wachstum und Skalierung Visualisierung - 3D Grafik mit aufsteigenden Balken" 
               className="relative w-full h-auto rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-              loading="lazy"
+              width="600"
+              height="400"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </div>
         </motion.div>
@@ -162,6 +167,8 @@ const Hero = () => {
       </motion.div>
     </section>
   );
-};
+});
+
+Hero.displayName = "Hero";
 
 export default Hero;

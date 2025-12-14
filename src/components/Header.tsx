@@ -15,8 +15,16 @@ const Header = () => {
     >
       <div className="section-container">
         <nav className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="flex items-center gap-2 md:gap-3">
-            <img src={skalatorLogo} alt="Skalator Logo" className="h-8 sm:h-10 md:h-12 w-auto" />
+          <a href="#" className="flex items-center gap-2 md:gap-3" aria-label="Skalator - Zur Startseite">
+            <img 
+              src={skalatorLogo} 
+              alt="Skalator Logo" 
+              className="h-8 sm:h-10 md:h-12 w-auto" 
+              width="48" 
+              height="48"
+              loading="eager"
+              decoding="async"
+            />
             <span className="font-display text-lg sm:text-xl md:text-2xl tracking-tight text-foreground font-bold uppercase">Skalator</span>
           </a>
           
