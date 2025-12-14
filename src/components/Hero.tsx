@@ -70,7 +70,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.4 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-foreground/40"
+              className="font-serif italic text-foreground/40"
             >
               Wachstumsproblem.
             </motion.span>
@@ -87,7 +87,7 @@ const Hero = () => {
               initial={{ backgroundSize: "0% 4px" }}
               animate={{ backgroundSize: "100% 4px" }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-accent bg-gradient-to-r from-accent to-accent bg-no-repeat bg-bottom pb-1"
+              className="font-serif italic text-accent bg-gradient-to-r from-accent to-accent bg-no-repeat bg-bottom pb-1"
             >
               Systemproblem.
             </motion.span>
