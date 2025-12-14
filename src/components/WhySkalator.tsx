@@ -148,6 +148,7 @@ const ReasonCard = ({
           <img 
             src={reason.image} 
             alt={reason.title}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           {/* Dark overlay gradient */}

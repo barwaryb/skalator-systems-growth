@@ -88,6 +88,7 @@ const CaseStudies = () => {
             <img 
               src={casesVisual} 
               alt="Case Studies" 
+              loading="lazy"
               className="relative w-full h-full object-cover rounded-2xl shadow-lg"
             />
           </motion.div>

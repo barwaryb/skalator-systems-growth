@@ -95,7 +95,7 @@ const CallToAction = () => {
                     className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition-all duration-300"
                   >
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden shrink-0">
-                      <img src={benefit.icon} alt="" className="w-full h-full object-cover" />
+                      <img src={benefit.icon} alt="" loading="lazy" className="w-full h-full object-cover" />
                     </div>
                     <span className="text-xs sm:text-sm font-medium text-white/80">{benefit.text}</span>
                   </motion.div>
@@ -118,7 +118,7 @@ const CallToAction = () => {
                     className="flex gap-3 sm:gap-4 group items-center"
                   >
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden shrink-0 group-hover:scale-110 transition-transform">
-                      <img src={step.icon} alt="" className="w-full h-full object-cover" />
+                      <img src={step.icon} alt="" loading="lazy" className="w-full h-full object-cover" />
                     </div>
                     <div className="min-w-0">
                       <h4 className="font-semibold text-white text-sm sm:text-base mb-0.5">{step.title}</h4>
@@ -161,7 +161,7 @@ const CallToAction = () => {
                   animate={{ rotate: isHovered ? [0, -5, 5, 0] : 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <img src={iconCalendar} alt="" className="w-full h-full object-cover" />
+                  <img src={iconCalendar} alt="" loading="lazy" className="w-full h-full object-cover" />
                 </motion.div>
 
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">

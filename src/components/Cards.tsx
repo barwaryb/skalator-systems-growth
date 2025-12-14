@@ -193,6 +193,7 @@ const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: num
           <img 
             src={card.image} 
             alt={card.label}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
