@@ -62,21 +62,9 @@ const Skalator = () => {
           </motion.span>
           <h2 className="text-display font-display font-bold text-foreground">
             Skalator{" "}
-            <motion.span
-              animate={isInView ? { 
-                opacity: [0.5, 1, 0.5],
-                scale: [1, 1.15, 1],
-                textShadow: ["0 0 0px hsl(var(--accent))", "0 0 20px hsl(var(--accent))", "0 0 0px hsl(var(--accent))"]
-              } : {}}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                ease: "easeInOut" 
-              }}
-              className="text-accent inline-block"
-            >
+            <span className="text-accent inline-block animate-pulse-glow">
               =
-            </motion.span>{" "}
+            </span>{" "}
             Skalierung + Automatisierung
           </h2>
         </motion.div>
