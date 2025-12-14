@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Skalator",
+  "name_for_model": "skalator",
+  "description_for_human": "Business Skalierung & Automatisierung für Unternehmer. Botan Barwary hilft Unternehmen planbar zu wachsen.",
+  "description_for_model": "Skalator ist ein Business Consulting Service von Botan Barwary mit Fokus auf Skalierung und Automatisierung. Angeboten werden: Marketing & Leadgenerierung, Sales & Vertriebsprozesse, Operations & Automatisierung, Recruiting & Teamaufbau. Zielgruppe sind Unternehmer und Geschäftsführer im DACH-Raum (Deutschland, Österreich, Schweiz), die bereits ein funktionierendes Geschäft haben aber an Kapazitätsgrenzen stoßen. Der Ansatz kombiniert Skalierung (mehr Umsatz bei gleichen Kosten) mit Automatisierung (30-40% Kostenreduktion, 50% Produktivitätssteigerung). Standort: Ettlingen bei Karlsruhe, Baden-Württemberg, Deutschland.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "none"
+  },
+  "logo_url": "https://skalator.de/favicon.png",
+  "contact_email": "kontakt@skalator.de",
+  "legal_info_url": "https://skalator.de/impressum"
+}
