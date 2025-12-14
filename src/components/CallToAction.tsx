@@ -85,7 +85,7 @@ const CallToAction = () => {
               <h3 className="text-xl font-bold text-white mb-6">
                 Was dich erwartet
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
@@ -94,10 +94,10 @@ const CallToAction = () => {
                     transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                     className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition-all duration-300"
                   >
-                    <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden shrink-0">
                       <img src={benefit.icon} alt="" className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-sm font-medium text-white/80">{benefit.text}</span>
+                    <span className="text-xs sm:text-sm font-medium text-white/80">{benefit.text}</span>
                   </motion.div>
                 ))}
               </div>
@@ -115,14 +115,14 @@ const CallToAction = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                    className="flex gap-4 group items-center"
+                    className="flex gap-3 sm:gap-4 group items-center"
                   >
-                    <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden shrink-0 group-hover:scale-110 transition-transform">
                       <img src={step.icon} alt="" className="w-full h-full object-cover" />
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-white mb-1">{step.title}</h4>
-                      <p className="text-sm text-white/50">{step.description}</p>
+                    <div className="min-w-0">
+                      <h4 className="font-semibold text-white text-sm sm:text-base mb-0.5">{step.title}</h4>
+                      <p className="text-xs sm:text-sm text-white/50">{step.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -137,9 +137,9 @@ const CallToAction = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="sticky top-8"
+            className="lg:sticky lg:top-8"
           >
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-10 relative overflow-hidden group hover:border-accent/30 transition-all duration-500">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6 sm:p-8 md:p-10 relative overflow-hidden group hover:border-accent/30 transition-all duration-500">
               {/* Animated gradient background */}
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/5"
@@ -157,35 +157,35 @@ const CallToAction = () => {
               <div className="relative z-10">
                 {/* Calendar Icon */}
                 <motion.div 
-                  className="w-20 h-20 rounded-2xl overflow-hidden mb-6"
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden mb-4 sm:mb-6"
                   animate={{ rotate: isHovered ? [0, -5, 5, 0] : 0 }}
                   transition={{ duration: 0.5 }}
                 >
                   <img src={iconCalendar} alt="" className="w-full h-full object-cover" />
                 </motion.div>
 
-                <h3 className="text-2xl font-bold text-white mb-2">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                   Termin vereinbaren
                 </h3>
-                <p className="text-white/60 mb-8">
+                <p className="text-sm sm:text-base text-white/60 mb-6 sm:mb-8">
                   Wähle einen Zeitslot, der für dich passt. Ich melde mich pünktlich per Video-Call.
                 </p>
 
                 {/* Availability indicator */}
-                <div className="flex items-center gap-2 mb-6 p-3 rounded-lg bg-green-500/10 border border-green-500/20">
-                  <div className="relative">
-                    <div className="w-3 h-3 bg-green-500 rounded-full" />
-                    <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping" />
+                <div className="flex items-center gap-2 mb-4 sm:mb-6 p-2.5 sm:p-3 rounded-lg bg-green-500/10 border border-green-500/20">
+                  <div className="relative shrink-0">
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full" />
+                    <div className="absolute inset-0 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-ping" />
                   </div>
-                  <span className="text-sm font-medium text-green-400">Termine diese Woche verfügbar</span>
+                  <span className="text-xs sm:text-sm font-medium text-green-400">Termine diese Woche verfügbar</span>
                 </div>
 
                 {/* CTA Buttons */}
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <Button 
                     variant="accent" 
-                    size="xl" 
-                    className="w-full group shadow-glow text-lg" 
+                    size="lg" 
+                    className="w-full group shadow-glow text-sm sm:text-base" 
                     asChild
                   >
                     <a 
@@ -195,14 +195,14 @@ const CallToAction = () => {
                       className="flex items-center justify-center gap-2"
                     >
                       Jetzt Termin buchen
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
                   </Button>
                   
                   <Button 
                     variant="outline" 
-                    size="lg" 
-                    className="w-full border-white/20 text-white hover:bg-white/10 hover:border-white/30" 
+                    size="default" 
+                    className="w-full border-white/20 text-white hover:bg-white/10 hover:border-white/30 text-sm sm:text-base" 
                     asChild
                   >
                     <a 
@@ -216,18 +216,18 @@ const CallToAction = () => {
                 </div>
 
                 {/* Trust badges */}
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <div className="flex items-center justify-center gap-6 text-sm text-white/50">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-accent" />
+                <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/10">
+                  <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-white/50">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
                       <span>Kostenfrei</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-accent" />
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
                       <span>30 Minuten</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-accent" />
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
                       <span>Unverbindlich</span>
                     </div>
                   </div>
