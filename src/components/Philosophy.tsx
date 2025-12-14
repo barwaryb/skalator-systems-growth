@@ -1,82 +1,56 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
+const statements = [
+  "Skalierung deckt Schwächen auf.",
+  "Struktur schlägt Motivation.",
+  "Was nicht skaliert, ist kein System.",
+];
+
 const Philosophy = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative overflow-hidden bg-background" ref={ref}>
-      {/* Large gradient orb */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] gradient-orb opacity-30"
-        animate={{ 
-          scale: [1, 1.1, 1],
-          rotate: [0, 180, 360],
-        }}
-        transition={{ 
-          duration: 30, 
-          repeat: Infinity, 
-          ease: "linear" 
-        }}
-      />
+    <section className="relative bg-foreground text-primary-foreground overflow-hidden" ref={ref}>
+      {/* Accent line */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-accent" />
 
-      <div className="section-container relative z-10">
-        <div className="py-32 md:py-48 lg:py-56">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1 }}
-            className="max-w-5xl mx-auto text-center"
-          >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-8 block"
-            >
-              Prinzip
-            </motion.span>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="font-heading text-headline md:text-display text-foreground leading-[0.95]"
-            >
-              Skalierung
-            </motion.h2>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="font-heading text-headline md:text-display text-foreground/20 leading-[0.95] mt-2"
-            >
-              entsteht nicht
-            </motion.h2>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="font-heading text-headline md:text-display text-foreground/20 leading-[0.95] mt-2"
-            >
-              durch mehr Arbeit.
-            </motion.h2>
-            
+      <div className="section-container section-padding">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <span className="text-sm font-bold text-accent uppercase tracking-[0.2em]">
+            Überzeugungen
+          </span>
+        </motion.div>
+
+        <div className="max-w-5xl mx-auto space-y-8 md:space-y-12">
+          {statements.map((statement, index) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, delay: 0.7 }}
-              className="mt-8"
+              transition={{ duration: 0.8, delay: 0.2 + index * 0.2 }}
+              className="text-center"
             >
-              <span className="font-heading text-headline md:text-display text-accent leading-[0.95]">
-                Sondern durch bessere Systeme.
-              </span>
+              <h3 className="font-display text-huge text-primary-foreground">
+                {statement}
+              </h3>
             </motion.div>
-          </motion.div>
+          ))}
         </div>
+
+        {/* Decorative accent */}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={isInView ? { scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 1 }}
+          className="w-4 h-4 bg-accent mx-auto mt-16"
+        />
       </div>
     </section>
   );
