@@ -1,150 +1,162 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowLeft, Shield, User, Cookie, Server, FileText, Scale } from "lucide-react";
+
+const sections = [
+  {
+    icon: FileText,
+    title: "1. Allgemeine Hinweise",
+    content: `Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
+
+Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten im Rahmen unserer Onlinepräsenz auf der Webseite www.skalator.de auf.`
+  },
+  {
+    icon: User,
+    title: "2. Verantwortlicher",
+    content: `Skalator – Botan Barwary
+Wilhelmstraße 17
+76275 Ettlingen
+E-Mail: info@skalator.de`
+  },
+  {
+    icon: Server,
+    title: "3. Erhebung und Speicherung personenbezogener Daten",
+    content: `Beim Besuch dieser Website können folgende Daten automatisch erhoben und gespeichert werden:
+
+• IP-Adresse
+• Browsertyp und -version
+• Verwendetes Betriebssystem
+• Referrer-URL
+• Datum und Uhrzeit der Serveranfrage
+
+Diese Daten dienen ausschließlich statistischen Zwecken und zur Verbesserung der Website. Rückschlüsse auf Ihre Person ziehen wir daraus nicht.`
+  },
+  {
+    icon: FileText,
+    title: "4. Kontaktaufnahme",
+    content: `Wenn Sie uns über das Kontaktformular oder per E-Mail kontaktieren, speichern wir Ihre Angaben zur Bearbeitung der Anfrage sowie für eventuelle Anschlussfragen.
+
+Verarbeitete Daten:
+• Name
+• E-Mail-Adresse
+• Anliegen / Nachricht
+
+Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung oder vorvertragliche Maßnahmen)`
+  },
+  {
+    icon: FileText,
+    title: "5. Terminbuchung",
+    content: `Wenn Sie einen Termin über ein eingebundenes Tool buchen, werden personenbezogene Daten wie Name, E-Mail und ggf. Telefonnummer verarbeitet. Die Daten werden dabei an den Dienstleister übertragen.
+
+Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO`
+  },
+  {
+    icon: Cookie,
+    title: "6. Cookies",
+    content: `Diese Website verwendet möglicherweise Cookies. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden und keine Viren enthalten. Sie dienen dazu, unser Angebot nutzerfreundlicher zu gestalten.
+
+Sie können Ihren Browser so einstellen, dass er Sie über das Setzen von Cookies informiert oder Cookies ganz deaktiviert. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.`
+  },
+  {
+    icon: Server,
+    title: "7. Webhosting",
+    content: `Unsere Website wird über Lovable gehostet. Es werden automatisch Server-Logfiles erstellt. Der Dienst arbeitet DSGVO-konform.`
+  },
+  {
+    icon: Scale,
+    title: "8. Ihre Rechte",
+    content: `Sie haben jederzeit das Recht auf:
+
+• Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)
+• Berichtigung unrichtiger Daten (Art. 16 DSGVO)
+• Löschung Ihrer Daten (Art. 17 DSGVO)
+• Einschränkung der Verarbeitung (Art. 18 DSGVO)
+• Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)
+• Datenübertragbarkeit (Art. 20 DSGVO)
+• Beschwerde bei einer Aufsichtsbehörde (z. B. LfDI Baden-Württemberg)`
+  },
+  {
+    icon: FileText,
+    title: "9. Änderung der Datenschutzerklärung",
+    content: `Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht.
+
+Stand: Juli 2025`
+  }
+];
 
 const Datenschutz = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="section-container py-16 md:py-24">
-        <Link 
-          to="/" 
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+    <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-bl from-accent/8 via-accent/3 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-tr from-violet-500/5 to-transparent rounded-full blur-3xl" />
+      </div>
+      
+      {/* Grid pattern */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+        backgroundSize: '60px 60px'
+      }} />
+
+      <div className="section-container py-16 md:py-24 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <ArrowLeft className="w-4 h-4" />
-          Zurück zur Startseite
-        </Link>
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-white/50 hover:text-accent transition-colors mb-12 group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Zurück zur Startseite
+          </Link>
+        </motion.div>
 
-        <h1 className="text-display mb-8">Datenschutzerklärung</h1>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-4 mb-4"
+        >
+          <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
+            <Shield className="w-7 h-7 text-accent" />
+          </div>
+          <h1 className="text-display text-white">Datenschutz</h1>
+        </motion.div>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-white/50 text-body-lg mb-12 max-w-2xl"
+        >
+          Informationen zur Erhebung und Verarbeitung Ihrer personenbezogenen Daten gemäß DSGVO.
+        </motion.p>
 
-        <div className="prose prose-lg max-w-none text-foreground/80">
-          <section className="mb-8">
-            <h2 className="text-headline text-foreground mb-4">1. Allgemeine Hinweise</h2>
-            <p className="text-body-lg">
-              Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
-            </p>
-            <p className="text-body-lg mt-4">
-              Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten (nachfolgend „Daten") im Rahmen unserer Onlinepräsenz auf der Webseite www.skalator.de auf.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-headline text-foreground mb-4">2. Verantwortlicher</h2>
-            <p className="text-body-lg">
-              Skalator – Botan Barwary<br />
-              Wilhelmstraße 17<br />
-              76275 Ettlingen<br />
-              E-Mail: <a href="mailto:info@skalator.de" className="text-accent hover:underline">info@skalator.de</a>
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-headline text-foreground mb-4">3. Erhebung und Speicherung personenbezogener Daten</h2>
-            <p className="text-body-lg">
-              Beim Besuch dieser Website können folgende Daten automatisch erhoben und gespeichert werden:
-            </p>
-            <ul className="list-disc list-inside text-body-lg mt-4 space-y-2">
-              <li>IP-Adresse</li>
-              <li>Browsertyp und -version</li>
-              <li>verwendetes Betriebssystem</li>
-              <li>Referrer-URL</li>
-              <li>Datum und Uhrzeit der Serveranfrage</li>
-            </ul>
-            <p className="text-body-lg mt-4">
-              Diese Daten dienen ausschließlich statistischen Zwecken und zur Verbesserung der Website. Rückschlüsse auf Ihre Person ziehen wir daraus nicht.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-headline text-foreground mb-4">4. Kontaktaufnahme</h2>
-            <p className="text-body-lg">
-              Wenn Sie uns über das Kontaktformular oder per E-Mail kontaktieren, speichern wir Ihre Angaben zur Bearbeitung der Anfrage sowie für eventuelle Anschlussfragen.
-            </p>
-            <p className="text-body-lg mt-4">
-              <strong>Verarbeitete Daten:</strong>
-            </p>
-            <ul className="list-disc list-inside text-body-lg mt-2 space-y-2">
-              <li>Name</li>
-              <li>E-Mail-Adresse</li>
-              <li>Anliegen / Nachricht</li>
-            </ul>
-            <p className="text-body-lg mt-4">
-              Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung oder vorvertragliche Maßnahmen)
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-headline text-foreground mb-4">5. Terminbuchung (z. B. via Calendly)</h2>
-            <p className="text-body-lg">
-              Wenn Sie einen Termin über ein eingebundenes Tool (z. B. Calendly) buchen, werden personenbezogene Daten wie Name, E-Mail und ggf. Telefonnummer verarbeitet. Die Daten werden dabei an den Dienstleister übertragen.
-            </p>
-            <p className="text-body-lg mt-4">
-              Calendly wird betrieben von Calendly LLC, USA. Datenschutzerklärung:{" "}
-              <a 
-                href="https://calendly.com/de/pages/privacy" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-accent hover:underline"
-              >
-                https://calendly.com/de/pages/privacy
-              </a>
-            </p>
-            <p className="text-body-lg mt-4">
-              Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-headline text-foreground mb-4">6. Cookies</h2>
-            <p className="text-body-lg">
-              Diese Website verwendet möglicherweise Cookies. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden und keine Viren enthalten. Sie dienen dazu, unser Angebot nutzerfreundlicher zu gestalten.
-            </p>
-            <p className="text-body-lg mt-4">
-              Sie können Ihren Browser so einstellen, dass er Sie über das Setzen von Cookies informiert oder Cookies ganz deaktiviert. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-headline text-foreground mb-4">7. Webhosting über Framer</h2>
-            <p className="text-body-lg">
-              Unsere Website wird über Framer gehostet (Framer B.V., Niederlande). Es werden automatisch Server-Logfiles erstellt. Framer arbeitet DSGVO-konform.
-            </p>
-            <p className="text-body-lg mt-4">
-              Weitere Informationen:{" "}
-              <a 
-                href="https://www.framer.com/legal/privacy-policy/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-accent hover:underline"
-              >
-                https://www.framer.com/legal/privacy-policy/
-              </a>
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-headline text-foreground mb-4">8. Ihre Rechte</h2>
-            <p className="text-body-lg">
-              Sie haben jederzeit das Recht auf:
-            </p>
-            <ul className="list-disc list-inside text-body-lg mt-4 space-y-2">
-              <li>Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)</li>
-              <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
-              <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
-              <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-              <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
-              <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-              <li>Beschwerde bei einer Aufsichtsbehörde (z. B. LfDI Baden-Württemberg)</li>
-            </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-headline text-foreground mb-4">9. Änderung der Datenschutzerklärung</h2>
-            <p className="text-body-lg">
-              Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht.
-            </p>
-            <p className="text-body-lg mt-4">
-              <strong>Stand: Juli 2025</strong>
-            </p>
-          </section>
+        <div className="max-w-4xl space-y-6">
+          {sections.map((section, index) => (
+            <motion.div
+              key={section.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
+              className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6 md:p-8 hover:border-white/20 transition-colors"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0 mt-1">
+                  <section.icon className="w-5 h-5 text-accent" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-white mb-4">{section.title}</h2>
+                  <div className="text-white/70 whitespace-pre-line leading-relaxed">
+                    {section.content}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>
