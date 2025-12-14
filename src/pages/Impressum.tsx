@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Mail, Globe, MapPin, User } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Impressum = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden">
+      <Header />
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-accent/8 via-accent/3 to-transparent rounded-full blur-3xl" />
@@ -184,6 +187,7 @@ const Impressum = () => {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
