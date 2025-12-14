@@ -24,12 +24,18 @@ const Booking = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section id="termin" className="section-padding relative overflow-hidden bg-gradient-to-b from-background-soft to-background" ref={ref}>
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-to-tl from-accent/3 to-transparent rounded-full blur-3xl" />
+    <section id="termin" className="section-padding bg-[#0a0a0a] relative overflow-hidden" ref={ref}>
+      {/* Elegant dark background with subtle gradients */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-accent/8 via-accent/3 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-to-tl from-violet-500/5 to-transparent rounded-full blur-3xl" />
       </div>
+      
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+        backgroundSize: '60px 60px'
+      }} />
 
       <div className="section-container relative z-10">
         {/* Header */}
@@ -43,14 +49,15 @@ const Booking = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-block text-xs md:text-sm font-semibold text-accent tracking-wide uppercase mb-4 px-4 py-2 bg-accent/10 rounded-full"
+            className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold text-accent tracking-wide uppercase mb-4"
           >
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             Kostenlos & Unverbindlich
           </motion.span>
-          <h2 className="text-headline font-bold text-foreground mb-4">
-            Strategiegespräch buchen
+          <h2 className="text-display font-bold text-white">
+            Strategiegespräch <span className="font-serif italic text-white/50">buchen</span>
           </h2>
-          <p className="text-body-lg text-foreground-muted max-w-2xl mx-auto">
+          <p className="text-body-lg text-white/60 max-w-2xl mx-auto mt-4">
             In 30 Minuten analysieren wir gemeinsam, wo dein größtes Wachstumspotenzial liegt – und ob wir zusammenpassen.
           </p>
         </motion.div>
@@ -61,11 +68,11 @@ const Booking = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-6"
           >
             {/* Benefits */}
-            <div className="modern-card p-6 md:p-8">
-              <h3 className="text-title font-bold text-foreground mb-6">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6 md:p-8">
+              <h3 className="text-xl font-bold text-white mb-6">
                 Was dich erwartet
               </h3>
               <div className="grid grid-cols-2 gap-4">
@@ -75,20 +82,20 @@ const Booking = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-background-soft/50 hover:bg-accent/5 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition-all duration-300"
                   >
                     <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                       <benefit.icon className="w-5 h-5 text-accent" />
                     </div>
-                    <span className="text-sm font-medium text-foreground">{benefit.text}</span>
+                    <span className="text-sm font-medium text-white/80">{benefit.text}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
 
             {/* Steps */}
-            <div className="modern-card p-6 md:p-8">
-              <h3 className="text-title font-bold text-foreground mb-6">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6 md:p-8">
+              <h3 className="text-xl font-bold text-white mb-6">
                 So funktioniert's
               </h3>
               <div className="space-y-4">
@@ -100,12 +107,12 @@ const Booking = () => {
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                     className="flex gap-4 group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent/70 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <span className="text-sm font-bold text-accent-foreground">{step.number}</span>
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent/70 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-accent/20">
+                      <span className="text-sm font-bold text-black">{step.number}</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">{step.title}</h4>
-                      <p className="text-sm text-foreground-muted">{step.description}</p>
+                      <h4 className="font-semibold text-white mb-1">{step.title}</h4>
+                      <p className="text-sm text-white/50">{step.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -122,11 +129,11 @@ const Booking = () => {
             onMouseLeave={() => setIsHovered(false)}
             className="sticky top-8"
           >
-            <div className="modern-card p-8 md:p-10 relative overflow-hidden group">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-10 relative overflow-hidden group hover:border-accent/30 transition-all duration-500">
               {/* Animated gradient background */}
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/5"
-                animate={{ opacity: isHovered ? 1 : 0.5 }}
+                animate={{ opacity: isHovered ? 1 : 0.3 }}
                 transition={{ duration: 0.3 }}
               />
               
@@ -140,17 +147,17 @@ const Booking = () => {
               <div className="relative z-10">
                 {/* Calendar Icon */}
                 <motion.div 
-                  className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-accent/70 flex items-center justify-center mb-6 shadow-lg shadow-accent/20"
+                  className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-accent/70 flex items-center justify-center mb-6 shadow-lg shadow-accent/30"
                   animate={{ rotate: isHovered ? [0, -5, 5, 0] : 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Calendar className="w-8 h-8 text-accent-foreground" />
+                  <Calendar className="w-8 h-8 text-black" />
                 </motion.div>
 
-                <h3 className="text-2xl font-bold text-foreground mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   Termin vereinbaren
                 </h3>
-                <p className="text-foreground-muted mb-8">
+                <p className="text-white/60 mb-8">
                   Wähle einen Zeitslot, der für dich passt. Ich melde mich pünktlich per Video-Call.
                 </p>
 
@@ -160,7 +167,7 @@ const Booking = () => {
                     <div className="w-3 h-3 bg-green-500 rounded-full" />
                     <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping" />
                   </div>
-                  <span className="text-sm font-medium text-green-600">Termine diese Woche verfügbar</span>
+                  <span className="text-sm font-medium text-green-400">Termine diese Woche verfügbar</span>
                 </div>
 
                 {/* CTA Button */}
@@ -182,8 +189,8 @@ const Booking = () => {
                 </Button>
 
                 {/* Trust badges */}
-                <div className="mt-6 pt-6 border-t border-border/50">
-                  <div className="flex items-center justify-center gap-6 text-sm text-foreground-muted">
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <div className="flex items-center justify-center gap-6 text-sm text-white/50">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-accent" />
                       <span>Kostenfrei</span>
