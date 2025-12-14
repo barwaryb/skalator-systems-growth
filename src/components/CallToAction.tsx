@@ -1,15 +1,21 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, CheckCircle, ArrowRight, Video, Shield, Zap, Mail } from "lucide-react";
+import { Calendar, CheckCircle, ArrowRight, Mail } from "lucide-react";
+
+// Premium generated icons
+import iconClock from "@/assets/icon-clock.png";
+import iconVideo from "@/assets/icon-video.png";
+import iconShield from "@/assets/icon-shield.png";
+import iconInsights from "@/assets/icon-insights.png";
 
 const GOOGLE_CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1J8LB-Qt3tzOmUygFk9PqamtOzvM1qo1PxXQxiodbMZBa41kcDQfFBhXAH0YwOoR_0uWt4tmpe";
 
 const benefits = [
-  { icon: Clock, text: "30 Min. Strategiegespräch" },
-  { icon: Video, text: "Per Video-Call" },
-  { icon: Shield, text: "100% Vertraulich" },
-  { icon: Zap, text: "Sofort umsetzbare Insights" },
+  { icon: iconClock, text: "30 Min. Strategiegespräch" },
+  { icon: iconVideo, text: "Per Video-Call" },
+  { icon: iconShield, text: "100% Vertraulich" },
+  { icon: iconInsights, text: "Sofort umsetzbare Insights" },
 ];
 
 const steps = [
@@ -84,8 +90,8 @@ const CallToAction = () => {
                     transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                     className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition-all duration-300"
                   >
-                    <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                      <benefit.icon className="w-5 h-5 text-accent" />
+                    <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
+                      <img src={benefit.icon} alt="" className="w-full h-full object-cover" />
                     </div>
                     <span className="text-sm font-medium text-white/80">{benefit.text}</span>
                   </motion.div>
