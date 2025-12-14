@@ -1,6 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const services = [
@@ -9,39 +9,77 @@ const services = [
     titlePart1: "Marketing &",
     titlePart2: "Leadgenerierung",
     description: "Von der Positionierung bis zum qualifizierten Lead – Systeme, die planbare Anfragen generieren.",
-    gradient: "from-cyan-900/40 via-cyan-800/20 to-background",
+    details: [
+      "Zielgruppenanalyse & Positionierung",
+      "Funnel-Aufbau & Conversion-Optimierung",
+      "Performance Marketing (Meta, Google, LinkedIn)",
+      "Content-Strategie & Leadmagneten",
+      "CRM-Integration & Lead-Scoring",
+    ],
+    result: "Mehr qualifizierte Anfragen, planbar und skalierbar.",
   },
   {
     id: "002",
     titlePart1: "Sales &",
     titlePart2: "Vertriebsprozesse",
     description: "Strukturen, die Leads in Kunden verwandeln. Kürzere Zyklen, höhere Abschlussquoten.",
-    gradient: "from-emerald-900/40 via-emerald-800/20 to-background",
+    details: [
+      "Vertriebsprozess-Design & Optimierung",
+      "Sales-Skripte & Einwandbehandlung",
+      "Pipeline-Management & Forecasting",
+      "Team-Schulung & Coaching",
+      "Closing-Strategien & Follow-up-Systeme",
+    ],
+    result: "Höhere Abschlussquoten, kürzere Sales Cycles.",
   },
   {
     id: "003",
     titlePart1: "Operations &",
     titlePart2: "Automatisierung",
     description: "Prozesse, die Wachstum tragen. Weniger Kosten, mehr Output mit dem gleichen Team.",
-    gradient: "from-violet-900/40 via-violet-800/20 to-background",
+    details: [
+      "Prozessanalyse & Optimierung",
+      "Workflow-Automatisierung (Make, Zapier, n8n)",
+      "Tool-Stack Aufbau & Integration",
+      "KI-gestützte Automatisierungen",
+      "SOPs & Dokumentation",
+    ],
+    result: "30-50% weniger operative Kosten, mehr Produktivität.",
   },
   {
     id: "004",
     titlePart1: "Recruiting &",
     titlePart2: "Teamaufbau",
     description: "Die richtigen Menschen finden und halten. Systeme für nachhaltiges Teamwachstum.",
-    gradient: "from-amber-900/40 via-amber-800/20 to-background",
+    details: [
+      "Employer Branding & Positionierung",
+      "Recruiting-Funnel & Kandidaten-Pipeline",
+      "Interview-Prozesse & Bewertungssysteme",
+      "Onboarding-Strukturen",
+      "Retention & Mitarbeiterentwicklung",
+    ],
+    result: "Bessere Kandidaten, schnellere Besetzung, weniger Fluktuation.",
   },
 ];
 
 const Services = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="leistungen" className="section-padding bg-background relative overflow-hidden" ref={ref}>
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-accent/5 to-transparent rounded-full blur-3xl" />
+    <section id="leistungen" className="section-padding bg-[#0a0a0a] relative overflow-hidden" ref={ref}>
+      {/* Elegant dark background with subtle gradients */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-accent/8 via-accent/3 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-cyan-500/5 to-transparent rounded-full blur-3xl" />
+      </div>
+      
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+        backgroundSize: '60px 60px'
+      }} />
       
       <div className="section-container relative z-10">
         {/* Header */}
@@ -55,21 +93,28 @@ const Services = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold text-accent tracking-wide uppercase mb-4"
+            className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold text-accent tracking-wide uppercase mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-accent" />
-            Leistungen
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            Leistungsmodule
           </motion.span>
-          <h2 className="text-display font-bold text-foreground">
+          <h2 className="text-display font-bold text-white">
             Der komplette Aufbau für{" "}
-            <span className="font-serif italic text-foreground-muted">messbares Wachstum</span>
+            <span className="font-serif italic text-white/50">messbares Wachstum</span>
           </h2>
         </motion.div>
 
         {/* Services List */}
-        <div className="space-y-4 md:space-y-6 mb-16">
+        <div className="space-y-3 md:space-y-4 mb-16">
           {services.map((service, index) => (
-            <ServiceItem key={service.id} service={service} index={index} isInView={isInView} />
+            <ServiceItem 
+              key={service.id} 
+              service={service} 
+              index={index} 
+              isInView={isInView}
+              isOpen={openIndex === index}
+              onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+            />
           ))}
         </div>
 
@@ -95,48 +140,122 @@ const Services = () => {
 const ServiceItem = ({ 
   service, 
   index, 
-  isInView 
+  isInView,
+  isOpen,
+  onToggle,
 }: { 
   service: typeof services[0]; 
   index: number; 
   isInView: boolean;
+  isOpen: boolean;
+  onToggle: () => void;
 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative"
+      className="group"
     >
-      <div className={`relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-r ${service.gradient} p-8 md:p-10 transition-all duration-500 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5`}>
+      <div 
+        onClick={onToggle}
+        className={`relative overflow-hidden rounded-2xl border transition-all duration-500 cursor-pointer ${
+          isOpen 
+            ? 'border-accent/40 bg-white/[0.03]' 
+            : 'border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]'
+        }`}
+      >
         {/* Large background number */}
-        <div className="absolute -top-8 -left-4 text-[12rem] md:text-[16rem] font-bold text-foreground/[0.03] leading-none select-none pointer-events-none font-display">
+        <div className="absolute -top-10 -left-6 text-[14rem] md:text-[18rem] font-bold text-white/[0.02] leading-none select-none pointer-events-none font-display">
           {service.id.slice(-2)}
         </div>
         
-        {/* Content */}
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
+        {/* Main row - always visible */}
+        <div className="relative z-10 p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
           {/* Number */}
-          <span className="text-sm font-mono text-foreground-muted">
+          <span className="text-sm font-mono text-white/40">
             {service.id}
           </span>
           
           {/* Title */}
-          <h3 className="flex-1 text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
+          <h3 className="flex-1 text-xl md:text-2xl lg:text-3xl font-bold text-white">
             {service.titlePart1}{" "}
-            <span className="font-serif italic text-foreground-muted">{service.titlePart2}</span>
+            <span className="font-serif italic text-white/50">{service.titlePart2}</span>
           </h3>
           
-          {/* Description */}
-          <p className="md:w-80 lg:w-96 text-foreground-muted text-sm md:text-base">
+          {/* Description - hidden on mobile when closed */}
+          <p className={`md:w-72 lg:w-80 text-white/60 text-sm ${isOpen ? 'hidden' : 'hidden md:block'}`}>
             {service.description}
           </p>
           
-          {/* Arrow */}
-          <div className="hidden md:flex w-12 h-12 rounded-xl border border-border/50 items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-300">
-            <ArrowRight className="w-5 h-5 text-foreground-muted group-hover:text-accent-foreground transition-colors" />
+          {/* Toggle icon */}
+          <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl border flex items-center justify-center transition-all duration-300 ${
+            isOpen 
+              ? 'bg-accent border-accent rotate-180' 
+              : 'border-white/20 group-hover:border-white/40'
+          }`}>
+            <ChevronDown className={`w-5 h-5 transition-colors ${isOpen ? 'text-accent-foreground' : 'text-white/60'}`} />
           </div>
         </div>
+        
+        {/* Expandable content */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="px-6 md:px-8 pb-8 pt-2">
+                <div className="border-t border-white/10 pt-6">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* Left: Description & Details */}
+                    <div>
+                      <p className="text-white/70 mb-6 text-base">
+                        {service.description}
+                      </p>
+                      <ul className="space-y-3">
+                        {service.details.map((detail, i) => (
+                          <motion.li
+                            key={i}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: i * 0.05 }}
+                            className="flex items-start gap-3 text-white/60"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                            <span>{detail}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    {/* Right: Result */}
+                    <div className="flex flex-col justify-between">
+                      <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl p-6 border border-accent/20">
+                        <span className="text-xs font-semibold text-accent uppercase tracking-wide mb-2 block">
+                          Nutzen
+                        </span>
+                        <p className="text-white font-medium text-lg">
+                          {service.result}
+                        </p>
+                      </div>
+                      
+                      <Button variant="outline" size="lg" asChild className="mt-6 border-white/20 text-white hover:bg-white/10 hover:border-white/30 group/btn">
+                        <a href="#kontakt" className="flex items-center gap-2">
+                          Mehr erfahren
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   );
