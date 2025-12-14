@@ -3,12 +3,12 @@ import { useRef, useState } from "react";
 import { TrendingUp, Users, Zap, ArrowRight, FileText, Sparkles, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import cardSales from "@/assets/card-sales-new.png";
-import cardDesign from "@/assets/card-design-new.png";
-import cardKi from "@/assets/card-ki-new.png";
-import cardGrowth from "@/assets/card-growth-new.png";
-import cardRecruiting from "@/assets/card-recruiting-new.png";
-import cardMarketing from "@/assets/card-marketing-new.png";
+import cardSales from "@/assets/card-sales.png";
+import cardDesign from "@/assets/card-design.png";
+import cardKi from "@/assets/card-ki.png";
+import cardGrowth from "@/assets/card-growth.png";
+import cardRecruiting from "@/assets/card-recruiting.png";
+import cardMarketing from "@/assets/card-marketing.png";
 
 const cards = [
   {
