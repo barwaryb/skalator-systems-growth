@@ -1,7 +1,9 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, CheckCircle } from "lucide-react";
+import { ArrowRight, Mail, CheckCircle, Calendar } from "lucide-react";
+
+const GOOGLE_CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1J8LB-Qt3tzOmUygFk9PqamtOzvM1qo1PxXQxiodbMZBa41kcDQfFBhXAH0YwOoR_0uWt4tmpe";
 
 const CallToAction = () => {
   const ref = useRef(null);
@@ -98,8 +100,9 @@ const CallToAction = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
             >
               <Button variant="accent" size="xl" asChild className="group shadow-glow">
-                <a href="mailto:kontakt@skalator.de" className="flex items-center gap-2">
-                  Gespräch anfragen
+                <a href={GOOGLE_CALENDAR_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5" />
+                  Termin buchen
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>

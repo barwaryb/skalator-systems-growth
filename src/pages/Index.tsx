@@ -4,6 +4,7 @@ import Cards from "@/components/Cards";
 import Skalator from "@/components/Skalator";
 import CaseStudies from "@/components/CaseStudies";
 import Philosophy from "@/components/Philosophy";
+import Booking from "@/components/Booking";
 import FAQ from "@/components/FAQ";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
@@ -18,6 +19,7 @@ const Index = () => {
         <Skalator />
         <CaseStudies />
         <Philosophy />
+        <Booking />
         <FAQ />
         <CallToAction />
       </main>
