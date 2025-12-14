@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Instagram, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import skalatorLogo from "@/assets/skalator-logo.png";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://linkedin.com/in/", label: "LinkedIn" },
@@ -42,9 +43,12 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <span className="font-display text-2xl font-bold uppercase tracking-tight text-white">
-                Skalator
-              </span>
+              <div className="flex items-center gap-2 md:gap-3">
+                <img src={skalatorLogo} alt="Skalator Logo" className="h-8 sm:h-10 md:h-12 w-auto" />
+                <span className="font-display text-xl md:text-2xl font-bold uppercase tracking-tight text-white">
+                  Skalator
+                </span>
+              </div>
               <p className="text-white/40 text-sm mt-1">Growth Operator</p>
             </motion.div>
 
