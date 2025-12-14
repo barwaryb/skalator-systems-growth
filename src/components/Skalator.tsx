@@ -61,11 +61,11 @@ const Skalator = () => {
             Das Konzept
           </motion.span>
           <h2 className="text-display font-display font-bold text-foreground">
-            Skalator{" "}
+            <span className="font-serif italic text-foreground/50">Skalator</span>{" "}
             <span className="text-accent inline-block animate-pulse-glow">
               =
             </span>{" "}
-            Skalierung + Automatisierung
+            <span className="font-serif italic text-foreground/50">Skalierung</span> + <span className="font-serif italic text-foreground/50">Automatisierung</span>
           </h2>
         </motion.div>
 
@@ -186,7 +186,7 @@ const Skalator = () => {
             {/* Glow behind text */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/10 to-transparent blur-2xl scale-150" />
             <p className="relative text-headline font-display font-bold text-foreground mb-8 max-w-3xl mx-auto">
-              Mit mir skalierst du wirklich deinen <span className="text-emerald-500 text-[1.15em] underline underline-offset-4 decoration-2">Umsatz</span> – und senkst automatisiert deine <span className="text-red-500 text-[1.15em] underline underline-offset-4 decoration-2">Kosten</span>.
+              Mit mir skalierst du wirklich deinen <span className="font-serif italic text-emerald-500 text-[1.15em] underline underline-offset-4 decoration-2">Umsatz</span> – und senkst automatisiert deine <span className="font-serif italic text-red-500 text-[1.15em] underline underline-offset-4 decoration-2">Kosten</span>.
             </p>
           </div>
           <Button variant="accent" size="xl" className="group" asChild>
