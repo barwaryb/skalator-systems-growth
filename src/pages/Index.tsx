@@ -8,6 +8,7 @@ import Booking from "@/components/Booking";
 import FAQ from "@/components/FAQ";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
         <CallToAction />
       </main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 };
