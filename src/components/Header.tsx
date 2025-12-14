@@ -1,25 +1,42 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <motion.header
-      initial={{ opacity: 0, y: -10 }}
+      initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50"
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled 
+          ? "bg-background-pure/80 backdrop-blur-xl border-b border-border/50 py-4" 
+          : "bg-transparent py-6"
+      }`}
     >
       <div className="section-container">
-        <nav className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="font-heading text-lg tracking-tight text-foreground">
+        <nav className="flex items-center justify-between">
+          <a href="#" className="font-heading text-xl tracking-tight text-foreground">
             Skalator
           </a>
           
-          <a
+          <motion.a
             href="#kontakt"
-            className="text-sm font-body text-foreground/80 hover:text-foreground transition-colors"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="text-sm font-body text-foreground/70 hover:text-foreground transition-colors duration-300 px-4 py-2 rounded-full border border-transparent hover:border-border hover:bg-background-pure/50"
           >
             Gespräch vereinbaren
-          </a>
+          </motion.a>
         </nav>
       </div>
     </motion.header>
