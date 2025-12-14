@@ -17,6 +17,11 @@ const services = [
       "CRM-Integration & Lead-Scoring",
     ],
     result: "Mehr qualifizierte Anfragen, planbar und skalierbar.",
+    glowColor: "from-cyan-400 via-blue-500 to-cyan-400",
+    bgGradient: "from-cyan-500/20 via-cyan-500/10 to-blue-500/10",
+    accentColor: "text-cyan-400",
+    dotColor: "bg-cyan-400",
+    borderColor: "border-cyan-400/40",
   },
   {
     id: "002",
@@ -31,6 +36,11 @@ const services = [
       "Closing-Strategien & Follow-up-Systeme",
     ],
     result: "Höhere Abschlussquoten, kürzere Sales Cycles.",
+    glowColor: "from-emerald-400 via-green-500 to-emerald-400",
+    bgGradient: "from-emerald-500/20 via-emerald-500/10 to-green-500/10",
+    accentColor: "text-emerald-400",
+    dotColor: "bg-emerald-400",
+    borderColor: "border-emerald-400/40",
   },
   {
     id: "003",
@@ -45,6 +55,11 @@ const services = [
       "SOPs & Dokumentation",
     ],
     result: "30-50% weniger operative Kosten, mehr Produktivität.",
+    glowColor: "from-violet-400 via-purple-500 to-violet-400",
+    bgGradient: "from-violet-500/20 via-violet-500/10 to-purple-500/10",
+    accentColor: "text-violet-400",
+    dotColor: "bg-violet-400",
+    borderColor: "border-violet-400/40",
   },
   {
     id: "004",
@@ -59,6 +74,11 @@ const services = [
       "Retention & Mitarbeiterentwicklung",
     ],
     result: "Bessere Kandidaten, schnellere Besetzung, weniger Fluktuation.",
+    glowColor: "from-amber-400 via-orange-500 to-amber-400",
+    bgGradient: "from-amber-500/20 via-amber-500/10 to-orange-500/10",
+    accentColor: "text-amber-400",
+    dotColor: "bg-amber-400",
+    borderColor: "border-amber-400/40",
   },
 ];
 
@@ -225,7 +245,7 @@ const ServiceItem = ({
                             transition={{ duration: 0.3, delay: i * 0.05 }}
                             className="flex items-start gap-3 text-white/60"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                            <span className={`w-1.5 h-1.5 rounded-full ${service.dotColor} mt-2 flex-shrink-0`} />
                             <span>{detail}</span>
                           </motion.li>
                         ))}
@@ -241,18 +261,18 @@ const ServiceItem = ({
                         className="relative group/nutzen"
                       >
                         {/* Glow effect behind */}
-                        <div className="absolute -inset-1 bg-gradient-to-r from-accent via-cyan-400 to-accent rounded-2xl blur-lg opacity-40 group-hover/nutzen:opacity-60 transition-opacity animate-pulse" />
+                        <div className={`absolute -inset-1 bg-gradient-to-r ${service.glowColor} rounded-2xl blur-lg opacity-40 group-hover/nutzen:opacity-60 transition-opacity animate-pulse`} />
                         
                         {/* Main card */}
-                        <div className="relative bg-gradient-to-br from-accent/20 via-accent/10 to-cyan-500/10 rounded-xl p-6 md:p-8 border border-accent/40 backdrop-blur-sm">
+                        <div className={`relative bg-gradient-to-br ${service.bgGradient} rounded-xl p-6 md:p-8 ${service.borderColor} border backdrop-blur-sm`}>
                           {/* Shine effect */}
                           <div className="absolute inset-0 rounded-xl overflow-hidden">
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/nutzen:translate-x-full transition-transform duration-1000" />
                           </div>
                           
                           <div className="relative">
-                            <span className="inline-flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-widest mb-3">
-                              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                            <span className={`inline-flex items-center gap-2 text-xs font-bold ${service.accentColor} uppercase tracking-widest mb-3`}>
+                              <span className={`w-2 h-2 rounded-full ${service.dotColor} animate-pulse`} />
                               Nutzen
                             </span>
                             <p className="text-white font-bold text-xl md:text-2xl leading-tight">
