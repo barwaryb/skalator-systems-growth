@@ -88,6 +88,7 @@ const Skalator = () => {
               <img 
                 src={scalingVisual} 
                 alt="Skalierung Visualisierung" 
+                loading="lazy"
                 className="w-full h-48 object-cover"
               />
             </motion.div>
@@ -139,6 +140,7 @@ const Skalator = () => {
               <img 
                 src={automationVisual} 
                 alt="Automatisierung Visualisierung" 
+                loading="lazy"
                 className="w-full h-48 object-cover"
               />
             </motion.div>
