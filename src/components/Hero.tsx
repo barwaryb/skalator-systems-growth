@@ -95,7 +95,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-body-lg text-foreground-muted max-w-xl mb-8 md:mb-10"
         >
-          Ich baue Strukturen, die Wachstum aushalten. Marketing. Recruiting. Prozesse.
+          Ich baue Strukturen, die Wachstum aushalten. Neue Kunden. Bessere Mitarbeiter. Weniger Kosten.
         </motion.p>
         
         {/* CTAs */}
