@@ -232,16 +232,35 @@ const ServiceItem = ({
                       </ul>
                     </div>
                     
-                    {/* Right: Result */}
+                    {/* Right: Result - HERO ELEMENT */}
                     <div className="flex flex-col justify-between">
-                      <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl p-6 border border-accent/20">
-                        <span className="text-xs font-semibold text-accent uppercase tracking-wide mb-2 block">
-                          Nutzen
-                        </span>
-                        <p className="text-white font-medium text-lg">
-                          {service.result}
-                        </p>
-                      </div>
+                      <motion.div 
+                        initial={{ scale: 0.95, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.4, delay: 0.2 }}
+                        className="relative group/nutzen"
+                      >
+                        {/* Glow effect behind */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-accent via-cyan-400 to-accent rounded-2xl blur-lg opacity-40 group-hover/nutzen:opacity-60 transition-opacity animate-pulse" />
+                        
+                        {/* Main card */}
+                        <div className="relative bg-gradient-to-br from-accent/20 via-accent/10 to-cyan-500/10 rounded-xl p-6 md:p-8 border border-accent/40 backdrop-blur-sm">
+                          {/* Shine effect */}
+                          <div className="absolute inset-0 rounded-xl overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/nutzen:translate-x-full transition-transform duration-1000" />
+                          </div>
+                          
+                          <div className="relative">
+                            <span className="inline-flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-widest mb-3">
+                              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                              Nutzen
+                            </span>
+                            <p className="text-white font-bold text-xl md:text-2xl leading-tight">
+                              {service.result}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
                       
                       <Button variant="outline" size="lg" asChild className="mt-6 border-white/20 text-white hover:bg-white/10 hover:border-white/30 group/btn">
                         <a href="#kontakt" className="flex items-center gap-2">
