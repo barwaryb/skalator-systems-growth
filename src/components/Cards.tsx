@@ -121,20 +121,15 @@ const Cards = () => {
 };
 
 const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: number; isInView: boolean }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center center"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-  const rotateX = useTransform(scrollYProgress, [0, 1], [15, 0]);
-
   return (
     <motion.div
-      ref={ref}
-      style={{ y, opacity, rotateX, transformPerspective: 1000 }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        ease: "easeOut"
+      }}
       whileHover={{ y: -8, transition: { duration: 0.3 } }}
       className="modern-card overflow-hidden group cursor-pointer"
     >
@@ -148,12 +143,9 @@ const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: num
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
         
         {/* Icon overlay */}
-        <motion.div 
-          whileHover={{ scale: 1.1 }}
-          className="absolute bottom-4 left-6 w-11 h-11 rounded-xl bg-background/30 backdrop-blur-md text-foreground flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 border border-border/30"
-        >
+        <div className="absolute bottom-4 left-6 w-11 h-11 rounded-xl bg-background/30 backdrop-blur-md text-foreground flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 border border-border/30">
           <card.icon className="w-5 h-5" strokeWidth={2} />
-        </motion.div>
+        </div>
       </div>
 
       {/* Content */}
@@ -172,25 +164,16 @@ const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: num
         </p>
 
         {/* Hover reveal CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          whileHover={{ opacity: 1, y: 0 }}
-          className="mt-5 opacity-0 group-hover:opacity-100 transition-all duration-300"
-        >
+        <div className="mt-5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
           <span className="text-sm font-semibold text-accent flex items-center gap-1">
             Mehr erfahren
             <ArrowRight className="w-4 h-4" />
           </span>
-        </motion.div>
+        </div>
       </div>
 
       {/* Animated border on hover */}
-      <motion.div 
-        className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent origin-left"
-        initial={{ scaleX: 0 }}
-        whileHover={{ scaleX: 1 }}
-        transition={{ duration: 0.3 }}
-      />
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
     </motion.div>
   );
 };
