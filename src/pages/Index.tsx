@@ -6,7 +6,6 @@ import Skalator from "@/components/Skalator";
 import WhySkalator from "@/components/WhySkalator";
 import CaseStudies from "@/components/CaseStudies";
 import Philosophy from "@/components/Philosophy";
-import Booking from "@/components/Booking";
 import FAQ from "@/components/FAQ";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
@@ -24,7 +23,6 @@ const Index = () => {
         <WhySkalator />
         <CaseStudies />
         <Philosophy />
-        <Booking />
         <FAQ />
         <CallToAction />
       </main>
