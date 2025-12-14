@@ -139,18 +139,18 @@ const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: num
       className="modern-card overflow-hidden group cursor-pointer"
     >
       {/* Background Image */}
-      <div className="relative h-32 overflow-hidden">
+      <div className="relative h-44 overflow-hidden">
         <img 
           src={card.image} 
           alt={card.label}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
         
         {/* Icon overlay */}
         <motion.div 
           whileHover={{ scale: 1.1 }}
-          className="absolute bottom-4 left-6 w-11 h-11 rounded-xl bg-accent/20 backdrop-blur-sm text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300"
+          className="absolute bottom-4 left-6 w-11 h-11 rounded-xl bg-background/30 backdrop-blur-md text-foreground flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 border border-border/30"
         >
           <card.icon className="w-5 h-5" strokeWidth={2} />
         </motion.div>
