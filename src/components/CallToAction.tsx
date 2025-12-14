@@ -1,13 +1,17 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, CheckCircle, ArrowRight, Mail } from "lucide-react";
+import { CheckCircle, ArrowRight, Mail } from "lucide-react";
 
 // Premium generated icons
 import iconClock from "@/assets/icon-clock.png";
 import iconVideo from "@/assets/icon-video.png";
 import iconShield from "@/assets/icon-shield.png";
 import iconInsights from "@/assets/icon-insights.png";
+import iconCalendar from "@/assets/icon-calendar.png";
+import step01 from "@/assets/step-01.png";
+import step02 from "@/assets/step-02.png";
+import step03 from "@/assets/step-03.png";
 
 const GOOGLE_CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1J8LB-Qt3tzOmUygFk9PqamtOzvM1qo1PxXQxiodbMZBa41kcDQfFBhXAH0YwOoR_0uWt4tmpe";
 
@@ -19,9 +23,9 @@ const benefits = [
 ];
 
 const steps = [
-  { number: "01", title: "Termin wählen", description: "Wähle einen passenden Zeitslot" },
-  { number: "02", title: "Details angeben", description: "Kurz dein Anliegen beschreiben" },
-  { number: "03", title: "Gespräch führen", description: "Wir analysieren deine Situation" },
+  { icon: step01, title: "Termin wählen", description: "Wähle einen passenden Zeitslot" },
+  { icon: step02, title: "Details angeben", description: "Kurz dein Anliegen beschreiben" },
+  { icon: step03, title: "Gespräch führen", description: "Wir analysieren deine Situation" },
 ];
 
 const CallToAction = () => {
@@ -111,10 +115,10 @@ const CallToAction = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                    className="flex gap-4 group"
+                    className="flex gap-4 group items-center"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent/70 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-accent/20">
-                      <span className="text-sm font-bold text-black">{step.number}</span>
+                    <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 group-hover:scale-110 transition-transform">
+                      <img src={step.icon} alt="" className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-white mb-1">{step.title}</h4>
@@ -153,11 +157,11 @@ const CallToAction = () => {
               <div className="relative z-10">
                 {/* Calendar Icon */}
                 <motion.div 
-                  className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-accent/70 flex items-center justify-center mb-6 shadow-lg shadow-accent/30"
+                  className="w-20 h-20 rounded-2xl overflow-hidden mb-6"
                   animate={{ rotate: isHovered ? [0, -5, 5, 0] : 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Calendar className="w-8 h-8 text-black" />
+                  <img src={iconCalendar} alt="" className="w-full h-full object-cover" />
                 </motion.div>
 
                 <h3 className="text-2xl font-bold text-white mb-2">
