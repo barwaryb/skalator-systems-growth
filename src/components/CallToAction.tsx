@@ -1,131 +1,79 @@
-import { motion, useInView, type Variants } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Calendar } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 
 const CallToAction = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section id="kontakt" className="relative bg-background section-padding overflow-hidden" ref={ref}>
-      {/* Grid background */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }}
-      />
+    <section id="kontakt" className="bg-background section-padding" ref={ref}>
+      {/* Gradient top */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
 
-      {/* Accent glow */}
-      <motion.div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/10 rounded-full blur-[150px]"
-        animate={{ opacity: [0.1, 0.2, 0.1] }}
-        transition={{ duration: 4, repeat: Infinity }}
-      />
-
-      <div className="section-container relative z-10">
+      <div className="section-container">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="max-w-4xl mx-auto text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto text-center"
         >
-          <motion.span
-            variants={itemVariants}
-            className="text-accent text-sm font-bold uppercase tracking-[0.2em] mb-8 block"
-          >
+          <span className="text-xs md:text-sm font-semibold text-accent tracking-wide uppercase mb-6 block">
             Nächster Schritt
-          </motion.span>
+          </span>
 
-          <motion.h2
-            variants={itemVariants}
-            className="font-display text-huge text-foreground mb-6"
-          >
+          <h2 className="text-headline font-bold text-foreground mb-4">
             Wenn Sie es ernst meinen
-          </motion.h2>
+            <br />
+            <span className="text-accent">mit Wachstum.</span>
+          </h2>
           
-          <motion.h2
-            variants={itemVariants}
-            className="font-display text-huge text-accent mb-12"
-          >
-            mit Wachstum.
-          </motion.h2>
+          <p className="text-body-lg text-foreground-muted mb-3">
+            Nicht geeignet für Neugierige.
+          </p>
+          <p className="text-lg font-semibold text-foreground mb-8">
+            Geeignet für Entscheider.
+          </p>
           
-          <motion.div variants={itemVariants} className="space-y-2 mb-12">
-            <p className="text-xl text-foreground-muted">
-              Nicht geeignet für Neugierige.
-            </p>
-            <p className="text-2xl text-foreground font-semibold">
-              Geeignet für Entscheider.
-            </p>
-          </motion.div>
-          
-          {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
-          >
-            <Button variant="accent" size="2xl" asChild>
-              <a href="mailto:kontakt@skalator.de" className="flex items-center gap-3">
-                <Calendar className="w-5 h-5" />
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+            <Button variant="accent" size="xl" asChild>
+              <a href="mailto:kontakt@skalator.de" className="flex items-center gap-2">
                 Gespräch anfragen
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Button>
-            <Button variant="hard" size="xl" asChild>
+            <Button variant="outline-accent" size="lg" asChild>
               <a href="mailto:kontakt@skalator.de" className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 E-Mail schreiben
               </a>
             </Button>
-          </motion.div>
+          </div>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-sm text-foreground-muted"
-          >
-            Antwort innerhalb von 24h · Kein Pitch · Nur Klarheit
-          </motion.p>
+          <p className="text-sm text-foreground-muted">
+            Antwort innerhalb von 24 Stunden
+          </p>
 
-          {/* Trust indicators */}
+          {/* Trust */}
           <motion.div
-            variants={itemVariants}
-            className="mt-16 pt-12 border-t border-foreground/10"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-12 pt-8 border-t border-border/50"
           >
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
               {[
                 { value: "24h", label: "Antwortzeit" },
-                { value: "100%", label: "Fokus" },
                 { value: "0€", label: "Erstgespräch" },
+                { value: "100%", label: "Vertraulich" },
               ].map((item) => (
                 <div key={item.label} className="text-center">
-                  <span className="block text-3xl md:text-4xl font-display font-bold text-foreground mb-1">
+                  <span className="block text-xl md:text-2xl font-bold text-foreground mb-0.5">
                     {item.value}
                   </span>
-                  <span className="text-xs text-foreground-muted uppercase tracking-wider">
+                  <span className="text-xs text-foreground-muted uppercase tracking-wide">
                     {item.label}
                   </span>
                 </div>

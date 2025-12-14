@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,23 +8,23 @@
   :root {
     /* Clean Light Theme */
     --background: 0 0% 100%;
-    --background-soft: 0 0% 95%;
-    --foreground: 0 0% 6%;
-    --foreground-muted: 0 0% 40%;
+    --background-soft: 0 0% 97%;
+    --foreground: 0 0% 8%;
+    --foreground-muted: 0 0% 45%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 6%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 6%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 0 0% 6%;
+    --primary: 0 0% 8%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 95%;
-    --secondary-foreground: 0 0% 6%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 0 0% 95%;
+    --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
     /* Electric Blue Accent */
@@ -34,15 +34,15 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
     --ring: 231 100% 56%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Typography */
-    --font-display: 'Archivo Black', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
   }
 
   * {
@@ -61,50 +61,55 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
   .section-container {
-    @apply mx-auto w-full max-w-[1600px] px-5 md:px-10 lg:px-16;
+    @apply mx-auto w-full max-w-[1200px] px-5 md:px-8;
   }
 
   .section-padding {
-    @apply py-24 md:py-32 lg:py-40;
+    @apply py-16 md:py-24 lg:py-32;
   }
 
-  /* Hard edge card */
-  .hard-card {
-    @apply bg-background border-2 border-foreground;
+  /* Modern card with subtle shadow */
+  .modern-card {
+    @apply bg-background rounded-2xl border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300;
   }
 
-  /* Accent line */
-  .accent-line {
-    @apply h-1 bg-accent;
+  /* Glass card */
+  .glass-card {
+    @apply bg-background/80 backdrop-blur-sm rounded-2xl border border-border/50;
   }
 }
 
 @layer utilities {
-  .text-massive {
-    font-size: clamp(3rem, 15vw, 14rem);
-    line-height: 0.85;
-    letter-spacing: -0.04em;
-  }
-
-  .text-huge {
-    font-size: clamp(2.5rem, 10vw, 8rem);
-    line-height: 0.9;
+  /* Responsive typography - mobile first */
+  .text-display {
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    line-height: 1.05;
     letter-spacing: -0.03em;
   }
 
-  .text-large {
-    font-size: clamp(2rem, 6vw, 5rem);
-    line-height: 0.95;
+  .text-headline {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    line-height: 1.1;
     letter-spacing: -0.02em;
+  }
+
+  .text-title {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .text-body-lg {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
   }
 }
 

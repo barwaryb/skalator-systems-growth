@@ -5,32 +5,33 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 uppercase tracking-wide group",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 group",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-secondary hover:text-secondary-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        // Power button - accent with glow
-        accent: "relative bg-accent text-accent-foreground font-bold hover:scale-[1.02] shadow-[0_0_30px_-5px_hsl(var(--accent)/0.5)] hover:shadow-[0_0_40px_-5px_hsl(var(--accent)/0.7)] overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700",
-        // Hard outline with fill on hover
-        hard: "border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background relative overflow-hidden",
-        // Ghost accent
-        "ghost-accent": "text-accent hover:bg-accent/10 font-medium",
-        // Pill style
-        pill: "rounded-full bg-foreground/5 text-foreground hover:bg-accent hover:text-accent-foreground border border-foreground/10 hover:border-accent",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 rounded-full",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-full",
+        outline: "border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background rounded-full",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full",
+        ghost: "hover:bg-secondary hover:text-secondary-foreground rounded-lg",
+        link: "text-foreground underline-offset-4 hover:underline",
+        // Modern gradient accent button
+        accent: "relative bg-accent text-accent-foreground font-semibold rounded-full overflow-hidden hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/0 before:via-white/20 before:to-white/0 before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-500",
+        // Soft accent
+        "accent-soft": "bg-accent/10 text-accent font-semibold rounded-full hover:bg-accent hover:text-accent-foreground",
+        // Outline with accent hover
+        "outline-accent": "border-2 border-foreground/20 bg-transparent text-foreground rounded-full hover:border-accent hover:text-accent",
+        // Dark solid
+        dark: "bg-foreground text-background rounded-full hover:bg-foreground/90",
+        // Text only with arrow animation
+        text: "text-foreground font-medium hover:text-accent p-0 h-auto",
       },
       size: {
-        default: "h-10 px-4 py-2 text-sm",
-        sm: "h-9 rounded-md px-3 text-xs",
-        lg: "h-12 px-8 text-base",
-        icon: "h-10 w-10",
+        default: "h-11 px-6 text-sm",
+        sm: "h-9 px-4 text-xs",
+        lg: "h-12 px-8 text-sm",
         xl: "h-14 px-10 text-base",
-        "2xl": "h-16 px-12 text-lg",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
