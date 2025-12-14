@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -35,24 +34,13 @@ const faqs = [
 ];
 
 const FAQ = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 relative overflow-hidden">
-      {/* Parallax background */}
-      <motion.div 
-        className="absolute inset-0 pointer-events-none"
-        style={{ y: backgroundY }}
-      >
+    <section className="py-16 md:py-24 lg:py-32 relative overflow-hidden">
+      {/* Static background */}
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-accent/3 rounded-full blur-3xl" />
-      </motion.div>
+      </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header */}
