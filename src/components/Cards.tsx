@@ -1,5 +1,5 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { TrendingUp, Users, Zap, ArrowRight, FileText, Sparkles, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -121,8 +121,36 @@ const Cards = () => {
 };
 
 const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: number; isInView: boolean }) => {
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    const mouseX = e.clientX - centerX;
+    const mouseY = e.clientY - centerY;
+    
+    // Calculate rotation (max 10 degrees)
+    const rotateXValue = (mouseY / (rect.height / 2)) * -8;
+    const rotateYValue = (mouseX / (rect.width / 2)) * 8;
+    
+    setRotateX(rotateXValue);
+    setRotateY(rotateYValue);
+  };
+
+  const handleMouseLeave = () => {
+    setRotateX(0);
+    setRotateY(0);
+  };
+
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ 
@@ -130,50 +158,81 @@ const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: num
         delay: index * 0.1,
         ease: "easeOut"
       }}
-      whileHover={{ y: -8, transition: { duration: 0.3 } }}
-      className="modern-card overflow-hidden group cursor-pointer"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        perspective: 1000,
+      }}
+      className="group cursor-pointer"
     >
-      {/* Background Image */}
-      <div className="relative h-44 overflow-hidden">
-        <img 
-          src={card.image} 
-          alt={card.label}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      <motion.div
+        animate={{
+          rotateX,
+          rotateY,
+          translateY: rotateX !== 0 || rotateY !== 0 ? -8 : 0,
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="modern-card overflow-hidden relative"
+      >
+        {/* Shine effect */}
+        <div 
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
+          style={{
+            background: `linear-gradient(
+              ${105 + rotateY * 5}deg,
+              transparent 40%,
+              rgba(255, 255, 255, 0.1) 50%,
+              transparent 60%
+            )`,
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-        
-        {/* Icon overlay */}
-        <div className="absolute bottom-4 left-6 w-11 h-11 rounded-xl bg-background/30 backdrop-blur-md text-foreground flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 border border-border/30">
-          <card.icon className="w-5 h-5" strokeWidth={2} />
-        </div>
-      </div>
 
-      {/* Content */}
-      <div className="p-6 md:p-8 pt-4">
-        {/* Label */}
-        <span className="text-xs font-semibold text-accent tracking-wide uppercase mb-3 block">
-          {card.label}
-        </span>
+        {/* Background Image */}
+        <div className="relative h-44 overflow-hidden">
+          <img 
+            src={card.image} 
+            alt={card.label}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+          
+          {/* Icon overlay */}
+          <div 
+            className="absolute bottom-4 left-6 w-11 h-11 rounded-xl bg-background/30 backdrop-blur-md text-foreground flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 border border-border/30"
+            style={{ transform: "translateZ(30px)" }}
+          >
+            <card.icon className="w-5 h-5" strokeWidth={2} />
+          </div>
+        </div>
 
         {/* Content */}
-        <h3 className="text-title font-bold text-foreground mb-1">
-          {card.headline}
-        </h3>
-        <p className="text-body-lg text-foreground-muted">
-          {card.subline}
-        </p>
-
-        {/* Hover reveal CTA */}
-        <div className="mt-5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-          <span className="text-sm font-semibold text-accent flex items-center gap-1">
-            Mehr erfahren
-            <ArrowRight className="w-4 h-4" />
+        <div className="p-6 md:p-8 pt-4" style={{ transform: "translateZ(20px)" }}>
+          {/* Label */}
+          <span className="text-xs font-semibold text-accent tracking-wide uppercase mb-3 block">
+            {card.label}
           </span>
-        </div>
-      </div>
 
-      {/* Animated border on hover */}
-      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+          {/* Content */}
+          <h3 className="text-title font-bold text-foreground mb-1">
+            {card.headline}
+          </h3>
+          <p className="text-body-lg text-foreground-muted">
+            {card.subline}
+          </p>
+
+          {/* Hover reveal CTA */}
+          <div className="mt-5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+            <span className="text-sm font-semibold text-accent flex items-center gap-1">
+              Mehr erfahren
+              <ArrowRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
+
+        {/* Animated border on hover */}
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+      </motion.div>
     </motion.div>
   );
 };
