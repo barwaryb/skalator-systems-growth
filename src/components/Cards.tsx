@@ -163,7 +163,7 @@ const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: num
       style={{
         perspective: 1000,
       }}
-      className="group cursor-pointer"
+      className="group cursor-pointer h-full"
     >
       <motion.div
         animate={{
@@ -173,7 +173,7 @@ const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: num
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="modern-card overflow-hidden relative"
+        className="modern-card overflow-hidden relative h-full flex flex-col"
       >
         {/* Shine effect */}
         <div 
@@ -207,7 +207,7 @@ const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: num
         </div>
 
         {/* Content */}
-        <div className="p-6 md:p-8 pt-4" style={{ transform: "translateZ(20px)" }}>
+        <div className="p-6 md:p-8 pt-4 flex-1 flex flex-col" style={{ transform: "translateZ(20px)" }}>
           {/* Label */}
           <span className="text-xs font-semibold text-accent tracking-wide uppercase mb-3 block">
             {card.label}
@@ -222,7 +222,7 @@ const CardItem = ({ card, index, isInView }: { card: typeof cards[0]; index: num
           </p>
 
           {/* Hover reveal CTA */}
-          <div className="mt-5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+          <div className="mt-auto pt-5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
             <span className="text-sm font-semibold text-accent flex items-center gap-1">
               Mehr erfahren
               <ArrowRight className="w-4 h-4" />
