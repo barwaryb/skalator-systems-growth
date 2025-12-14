@@ -57,7 +57,7 @@ const CallToAction = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="inline-block text-xs md:text-sm font-semibold text-accent tracking-wide uppercase mb-6 px-4 py-2 bg-accent/10 rounded-full"
             >
-              Nächster Schritt
+              Kostenlos & Unverbindlich
             </motion.span>
 
             <motion.h2 
@@ -66,15 +66,14 @@ const CallToAction = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-headline font-bold text-foreground mb-6"
             >
-              Wenn Sie es ernst meinen
-              <br />
+              Strategiegespräch{" "}
               <motion.span 
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="text-accent"
               >
-                mit Wachstum.
+                buchen
               </motion.span>
             </motion.h2>
             
@@ -82,13 +81,10 @@ const CallToAction = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mb-8 space-y-2"
+              className="mb-8"
             >
               <p className="text-body-lg text-foreground-muted">
-                Nicht geeignet für Neugierige.
-              </p>
-              <p className="text-lg font-bold text-foreground">
-                Geeignet für Entscheider.
+                In 30 Minuten analysieren wir gemeinsam, wo dein größtes Wachstumspotenzial liegt – und ob wir zusammenpassen.
               </p>
             </motion.div>
             
