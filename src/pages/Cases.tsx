@@ -64,18 +64,18 @@ const Cases = () => {
               >
                 <Link
                   to={`/cases/${caseItem.slug}`}
-                  className="group block bg-white/[0.03] border border-white/10 rounded-2xl p-6 md:p-8 hover:border-accent/30 hover:bg-white/[0.05] transition-all duration-300 h-full"
+                  className="group block bg-white/[0.03] border border-white/10 rounded-2xl p-5 md:p-8 hover:border-accent/30 hover:bg-white/[0.05] transition-all duration-300 h-full overflow-hidden"
                 >
                   <span className="inline-block text-xs font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-full mb-4">
                     {caseItem.branche}
                   </span>
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors leading-tight">
+                  <h3 className="text-base md:text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors leading-tight break-words">
                     {caseItem.headline}
                   </h3>
                   <p className="text-sm text-white/50 mb-6 line-clamp-2">{caseItem.problem}</p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="text-2xl font-bold text-accent">{caseItem.keyMetrik}</span>
-                    <Button variant="outline" size="sm" className="border-white/20 text-white hover:bg-white/10 group-hover:border-accent group-hover:text-accent">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-auto">
+                    <span className="text-xl md:text-2xl font-bold text-accent">{caseItem.keyMetrik}</span>
+                    <Button variant="outline" size="sm" className="border-white/20 text-white hover:bg-white/10 group-hover:border-accent group-hover:text-accent whitespace-nowrap text-xs">
                       Case ansehen
                       <ArrowRight className="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1" />
                     </Button>
