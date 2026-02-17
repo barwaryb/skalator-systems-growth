@@ -46,6 +46,26 @@ Umsatz verdreifacht in 4 Monaten. Arbeitsstunden halbiert. Planbare Neukundengew
 ### Gartenbau Voice AI (/cases/gartenbau-voice-ai)
 24/7 erreichbar durch Voice-AI Telefonassistent. Kein verpasster Auftrag mehr. Terminbuchung vollautomatisch.
 
+## Themen-Expertise
+
+### Marketing automatisieren (/marketing-automatisierung)
+Marketing-Automatisierung für B2B-Unternehmen: Funnel-Aufbau, Ads-Automatisierung, Lead-Scoring, Follow-up Sequenzen. Planbare Kundengewinnung statt manuelles Marketing.
+
+### Neukunden gewinnen (/neukunden-gewinnung)
+Systematische Neukundengewinnung im B2B: Positionierung, Sichtbarkeit, Lead-Qualifizierung und Verkaufsprozess. Unabhängig von Empfehlungen und Kaltakquise.
+
+### B2B Leadgenerierung (/leadgenerierung-b2b)
+Qualifizierte B2B-Leads durch ICP-Definition, Conversion-Funnels, Multi-Channel Ads und automatische Lead-Qualifizierung.
+
+### Vertrieb automatisieren (/vertrieb-automatisieren)
+Vertriebsprozesse automatisieren: CRM-Automatisierung, Follow-up Sequenzen, Pipeline-Management und Echtzeit-Reporting.
+
+### KI-Automatisierung für Unternehmen (/ki-automatisierung-unternehmen)
+KI-Automatisierung mit Voice AI, Workflow-Automatisierung, Chatbots und KI-gestützter Dokumentation. 30-50% Kostenreduktion.
+
+### Business skalieren (/business-skalierung)
+Business skalieren ohne Chaos: Systeme für Kundengewinnung, Vertrieb, Operations und Teamaufbau aus einer Hand.
+
 ## Über Botan Barwary (/ueber-mich)
 Growth Operator & Gründer von Skalator. B.Sc. International IT Business (Hochschule Karlsruhe), Data Analyst bei EnBW, Sales Development Engineer bei Cognex Corporation. Host des Podcasts "Einfach Machen" mit 500+ Folgen.
 

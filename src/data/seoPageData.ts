@@ -1,0 +1,292 @@
+export interface SeoPageData {
+  slug: string;
+  metaTitle: string;
+  metaDescription: string;
+  label: string;
+  headline: string;
+  highlightWord: string;
+  subline: string;
+  introHeadline: string;
+  introText: string;
+  problemHeadline: string;
+  problems: string[];
+  loesungHeadline: string;
+  loesungText: string;
+  loesungPoints: { title: string; desc: string }[];
+  stats: { value: string; label: string }[];
+  ansatzHeadline: string;
+  ansatzText: string;
+  relevanteCases: string[];
+  relevanteLeistungen: string[];
+  faqs: { frage: string; antwort: string }[];
+  ctaHeadline: string;
+  ctaSubline: string;
+}
+
+export const seoPages: SeoPageData[] = [
+  {
+    slug: "marketing-automatisierung",
+    metaTitle: "Marketing automatisieren – Planbar Kunden gewinnen | Skalator",
+    metaDescription: "Marketing automatisieren für B2B-Unternehmen: Mehr Anfragen, weniger Aufwand. Systeme für planbare Kundengewinnung statt manuelles Marketing.",
+    label: "Marketing Automatisierung",
+    headline: "Marketing automatisieren. Kunden gewinnen. Planbar.",
+    highlightWord: "Planbar.",
+    subline: "Warum die meisten Unternehmen kein Marketing-Problem haben – sondern ein System-Problem.",
+    introHeadline: "Marketing ohne System = Geldverbrennung",
+    introText: "Du postest auf Social Media, schaltest ab und zu Ads, probierst neue Kanäle aus. Aber die Ergebnisse? Unberechenbar. Mal kommen Anfragen, mal nicht. Das Problem ist nicht dein Marketing – es ist das fehlende System dahinter. Marketing-Automatisierung bedeutet: Einmal aufbauen, dauerhaft profitieren. Jeder Lead wird erfasst, qualifiziert und automatisch weiterverarbeitet. Kein manuelles Nachfassen, keine vergessenen Follow-ups.",
+    problemHeadline: "Das passiert ohne Marketing-Automatisierung",
+    problems: [
+      "Leads gehen verloren, weil niemand sie rechtzeitig kontaktiert",
+      "Du weißt nicht, welche Kampagnen wirklich funktionieren",
+      "Dein Team verbringt Stunden mit manuellen Follow-ups",
+      "Kein planbarer Neukundenstrom – mal viel, mal nichts",
+      "Hohe Werbekosten ohne messbaren ROI",
+    ],
+    loesungHeadline: "So funktioniert automatisiertes Marketing",
+    loesungText: "Ein Marketing-System, das rund um die Uhr für dich arbeitet:",
+    loesungPoints: [
+      { title: "Funnel-Aufbau", desc: "Landing Pages, Lead-Magnete und Conversion-optimierte Formulare die automatisch qualifizierte Anfragen generieren." },
+      { title: "Ads-Automatisierung", desc: "Meta & Google Ads mit automatischer Budget-Optimierung und A/B-Testing für maximalen ROI." },
+      { title: "Lead-Scoring & CRM", desc: "Jeder Lead wird automatisch bewertet und priorisiert. Dein Vertrieb kontaktiert nur die besten Kontakte." },
+      { title: "Follow-up Sequenzen", desc: "Automatische E-Mail- und SMS-Sequenzen die Leads warm halten und zum Abschluss führen." },
+    ],
+    stats: [
+      { value: "-60%", label: "Cost-per-Lead" },
+      { value: "24/7", label: "Lead-Generierung" },
+      { value: "3x", label: "Mehr qualifizierte Anfragen" },
+    ],
+    ansatzHeadline: "Der Skalator-Ansatz",
+    ansatzText: "Kein 08/15-Funnel von der Stange. Wir analysieren dein Business, deine Zielgruppe und deine Zahlen. Dann bauen wir ein System, das zu dir passt – und das wir gemeinsam skalieren. Keine Agentur-Abhängigkeit. Du verstehst, was läuft und warum.",
+    relevanteCases: ["immobilien-leadgenerierung", "dubai-real-estate"],
+    relevanteLeistungen: ["marketing-leadgenerierung", "operations-automatisierung"],
+    faqs: [
+      { frage: "Was kostet Marketing-Automatisierung?", antwort: "Die Investition hängt von der Komplexität ab. Typischerweise rechnet sich das System innerhalb von 2-3 Monaten durch die eingesparte Zeit und bessere Conversion-Rates." },
+      { frage: "Brauche ich technische Vorkenntnisse?", antwort: "Nein. Wir bauen das System komplett auf und schulen dich oder dein Team in der Bedienung. Du brauchst keine Programmierkenntnisse." },
+      { frage: "Wie schnell sehe ich Ergebnisse?", antwort: "Die ersten Leads kommen typischerweise innerhalb der ersten 2 Wochen nach Launch. Planbare Ergebnisse ab Monat 2-3." },
+      { frage: "Funktioniert das auch für kleine Unternehmen?", antwort: "Ja. Gerade kleine Unternehmen profitieren am meisten, weil die Automatisierung die fehlende Manpower ausgleicht." },
+      { frage: "Welche Tools werden verwendet?", antwort: "Wir arbeiten mit bewährten Tools wie Meta Ads, Google Ads, CRM-Systemen und Automatisierungsplattformen wie n8n und Make.com." },
+    ],
+    ctaHeadline: "Bereit für planbare Kundengewinnung?",
+    ctaSubline: "Lass uns in einem kostenlosen Gespräch herausfinden, wie Marketing-Automatisierung dein Business transformiert.",
+  },
+  {
+    slug: "neukunden-gewinnung",
+    metaTitle: "Neukunden gewinnen im B2B – Systeme statt Zufall | Skalator",
+    metaDescription: "Neukunden gewinnen ohne Kaltakquise. Planbare Systeme für B2B-Unternehmen: Mehr Anfragen, bessere Leads, kürzere Sales Cycles.",
+    label: "Neukundengewinnung",
+    headline: "Neukunden gewinnen. Systematisch. Nicht zufällig.",
+    highlightWord: "Systematisch.",
+    subline: "Warum Empfehlungen und Kaltakquise dein Business nicht skalieren – und was stattdessen funktioniert.",
+    introHeadline: "Empfehlungen sind kein Wachstumsplan",
+    introText: "Die meisten B2B-Unternehmen gewinnen Kunden über Empfehlungen und persönliche Netzwerke. Das funktioniert – bis es nicht mehr reicht. Du kannst nicht planen, wann die nächste Empfehlung kommt. Du kannst nicht skalieren, was du nicht kontrollierst. Planbare Neukundengewinnung bedeutet: Ein System, das jeden Tag qualifizierte Anfragen liefert. Unabhängig von deinem Netzwerk, deiner Laune oder dem Zufall.",
+    problemHeadline: "Typische Probleme bei der Neukundengewinnung",
+    problems: [
+      "Abhängigkeit von Empfehlungen – mal kommen viele, mal keine",
+      "Kaltakquise kostet Zeit und bringt wenig qualifizierte Kontakte",
+      "Keine Sichtbarkeit bei potenziellen Kunden online",
+      "Zu viel Zeit im Vertrieb, zu wenig für das Kerngeschäft",
+      "Unklare Positionierung – warum sollte jemand dich wählen?",
+    ],
+    loesungHeadline: "So gewinnst du planbar Neukunden",
+    loesungText: "Ein durchdachtes System aus Sichtbarkeit, Vertrauen und Conversion:",
+    loesungPoints: [
+      { title: "Positionierung", desc: "Klare Botschaft, die deine Zielgruppe sofort versteht. Warum du – und nicht die Konkurrenz." },
+      { title: "Sichtbarkeit", desc: "Gezielte Online-Präsenz dort, wo deine Wunschkunden suchen. Ads, Content, Landing Pages." },
+      { title: "Lead-Qualifizierung", desc: "Nicht jeder Kontakt ist ein guter Lead. Automatische Bewertung spart deinem Vertrieb Zeit." },
+      { title: "Verkaufsprozess", desc: "Vom ersten Kontakt bis zum Abschluss – ein klarer Prozess, der Conversion maximiert." },
+    ],
+    stats: [
+      { value: "15+", label: "Qualifizierte Anfragen/Monat" },
+      { value: "2x", label: "Abschlussquote" },
+      { value: "<30€", label: "Cost-per-Lead" },
+    ],
+    ansatzHeadline: "Warum Skalator?",
+    ansatzText: "Ich verkaufe keine Leads. Ich baue Systeme. Der Unterschied: Wenn eine Agentur aufhört zu arbeiten, stoppen deine Anfragen. Wenn ich aufhöre, läuft dein System weiter. Du bist unabhängig, verstehst was funktioniert und kannst selbst skalieren.",
+    relevanteCases: ["immobilien-leadgenerierung", "coaching-skalierung"],
+    relevanteLeistungen: ["marketing-leadgenerierung", "sales-vertriebsprozesse"],
+    faqs: [
+      { frage: "Wie viele Neukunden kann ich pro Monat gewinnen?", antwort: "Das hängt von deiner Branche und deinem Budget ab. Typisch sind 10-30 qualifizierte Anfragen pro Monat innerhalb der ersten 3 Monate." },
+      { frage: "Ist das auch für Dienstleister relevant?", antwort: "Besonders für Dienstleister. Ob Beratung, Agentur, Handwerk oder IT – die Systematik funktioniert branchenübergreifend." },
+      { frage: "Brauche ich ein großes Werbebudget?", antwort: "Nein. Wir starten typischerweise mit 500-1.500€/Monat und skalieren basierend auf den Ergebnissen." },
+      { frage: "Was ist der Unterschied zu einer Marketing-Agentur?", antwort: "Eine Agentur führt Kampagnen für dich durch. Ich baue ein System, das du selbst betreiben kannst. Du wirst unabhängig statt abhängig." },
+    ],
+    ctaHeadline: "Schluss mit Zufall bei der Neukundengewinnung.",
+    ctaSubline: "Lass uns gemeinsam ein System aufbauen, das planbar funktioniert.",
+  },
+  {
+    slug: "leadgenerierung-b2b",
+    metaTitle: "Leadgenerierung B2B – Qualifizierte Leads automatisiert | Skalator",
+    metaDescription: "B2B Leadgenerierung die funktioniert: Qualifizierte Anfragen durch Funnels, Ads und Automatisierung. Planbar, messbar, skalierbar.",
+    label: "B2B Leadgenerierung",
+    headline: "B2B Leadgenerierung. Qualifiziert. Automatisiert.",
+    highlightWord: "Automatisiert.",
+    subline: "Warum die meisten B2B-Unternehmen zu viele schlechte Leads haben – und wie du nur die richtigen bekommst.",
+    introHeadline: "Mehr Leads ≠ Mehr Kunden",
+    introText: "Die meisten Unternehmen denken, sie brauchen mehr Leads. Falsch. Sie brauchen bessere Leads. Was bringen 100 Anfragen, wenn nur 3 davon ernsthaft kaufen wollen? Effektive B2B Leadgenerierung filtert von Anfang an. Nur wer wirklich passt, kommt durch. Das spart deinem Vertrieb Zeit und erhöht die Abschlussquote drastisch.",
+    problemHeadline: "Warum deine Leadgenerierung nicht funktioniert",
+    problems: [
+      "Zu viele unqualifizierte Anfragen, die Vertriebszeit verschwenden",
+      "Keine klare Zielgruppen-Definition – du sprichst alle an und erreichst niemanden",
+      "Landing Pages ohne Conversion-Optimierung",
+      "Kein Lead-Scoring – dein Vertrieb weiß nicht, wer kaufbereit ist",
+      "Fehlende Follow-up-Strategie – 80% der Leads werden nie kontaktiert",
+    ],
+    loesungHeadline: "B2B Leadgenerierung die wirklich funktioniert",
+    loesungText: "Ein System, das nur qualifizierte Leads durchlässt:",
+    loesungPoints: [
+      { title: "ICP-Definition", desc: "Wir definieren dein Ideal Customer Profile messerscharf. Nur wer passt, sieht deine Ads." },
+      { title: "Conversion-Funnels", desc: "Landing Pages und Lead-Magnete die deine Zielgruppe ansprechen und automatisch qualifizieren." },
+      { title: "Multi-Channel Ads", desc: "Meta, Google, LinkedIn – die richtige Botschaft auf dem richtigen Kanal." },
+      { title: "Automatische Qualifizierung", desc: "Lead-Scoring, automatische Kategorisierung und Priorisierung für deinen Vertrieb." },
+    ],
+    stats: [
+      { value: "3x", label: "Bessere Lead-Qualität" },
+      { value: "-60%", label: "Cost-per-Lead" },
+      { value: "80%", label: "Follow-up-Rate" },
+    ],
+    ansatzHeadline: "Qualität vor Quantität",
+    ansatzText: "Ich baue keine Lead-Schleudern. Ich baue Systeme, die deinem Vertrieb die Arbeit erleichtern. Weniger, aber bessere Leads. Höhere Abschlussquoten. Mehr Umsatz mit weniger Aufwand. Das ist echter ROI.",
+    relevanteCases: ["immobilien-leadgenerierung", "dubai-real-estate"],
+    relevanteLeistungen: ["marketing-leadgenerierung"],
+    faqs: [
+      { frage: "Was ist B2B Leadgenerierung?", antwort: "B2B Leadgenerierung ist der systematische Prozess, potenzielle Geschäftskunden zu identifizieren, anzusprechen und als qualifizierte Anfragen zu gewinnen." },
+      { frage: "Welche Kanäle eignen sich für B2B?", antwort: "Je nach Branche: LinkedIn für hochpreisige B2B-Dienstleistungen, Meta Ads für breiteres Targeting, Google Ads für Suchintention. Oft eine Kombination." },
+      { frage: "Wie messe ich die Qualität meiner Leads?", antwort: "Durch Lead-Scoring basierend auf Kriterien wie Unternehmensgröße, Budget, Dringlichkeit und Entscheidungsbefugnis. Wir richten das automatisch ein." },
+      { frage: "Wie schnell generiert das System Leads?", antwort: "Erste Leads innerhalb von 1-2 Wochen nach Launch. Planbare Ergebnisse nach 4-6 Wochen Optimierung." },
+    ],
+    ctaHeadline: "Bessere Leads. Weniger Aufwand.",
+    ctaSubline: "Lass uns dein Leadgenerierungs-System aufbauen.",
+  },
+  {
+    slug: "vertrieb-automatisieren",
+    metaTitle: "Vertrieb automatisieren – Mehr Abschlüsse, weniger Aufwand | Skalator",
+    metaDescription: "Vertriebsprozesse automatisieren: CRM, Follow-ups, Pipeline-Management. Kürzere Sales Cycles, höhere Abschlussquoten.",
+    label: "Vertrieb Automatisierung",
+    headline: "Vertrieb automatisieren. Abschlüsse maximieren.",
+    highlightWord: "maximieren.",
+    subline: "Warum dein Vertrieb zu viel Zeit mit den falschen Aufgaben verbringt – und wie Automatisierung das ändert.",
+    introHeadline: "Dein Vertrieb verliert Geld. Jeden Tag.",
+    introText: "Wie viel Zeit verbringt dein Vertriebsteam mit manuellen CRM-Einträgen, Follow-up E-Mails und Pipeline-Updates? Wahrscheinlich 40-60% ihrer Arbeitszeit. Das sind Stunden, die sie nicht am Telefon mit kaufbereiten Kunden verbringen. Vertriebs-Automatisierung bedeutet nicht, Menschen zu ersetzen. Es bedeutet, ihnen die Arbeit abzunehmen, die eine Maschine besser kann – damit sie das tun können, was nur Menschen können: verkaufen.",
+    problemHeadline: "Das kostet dich ein manueller Vertrieb",
+    problems: [
+      "Leads fallen durch's Raster, weil Follow-ups vergessen werden",
+      "Keine Übersicht über die Pipeline – niemand weiß wo welcher Deal steht",
+      "Vertriebsmitarbeiter verbringen mehr Zeit im CRM als am Telefon",
+      "Keine standardisierten Prozesse – jeder macht es anders",
+      "Forecasting ist Rätselraten statt Datenbasis",
+    ],
+    loesungHeadline: "So automatisierst du deinen Vertrieb",
+    loesungText: "Systeme, die deinem Vertriebsteam Superkräfte geben:",
+    loesungPoints: [
+      { title: "CRM-Automatisierung", desc: "Kontakte werden automatisch angelegt, kategorisiert und dem richtigen Vertriebsmitarbeiter zugewiesen." },
+      { title: "Follow-up Sequenzen", desc: "Automatische E-Mail- und Aufgaben-Sequenzen stellen sicher, dass kein Lead vergessen wird." },
+      { title: "Pipeline-Management", desc: "Automatische Deal-Stages, Benachrichtigungen und Eskalationen für volle Transparenz." },
+      { title: "Reporting", desc: "Echtzeit-Dashboards zeigen Conversion-Rates, Pipeline-Wert und Forecast auf einen Blick." },
+    ],
+    stats: [
+      { value: "+40%", label: "Mehr Verkaufszeit" },
+      { value: "2x", label: "Höhere Abschlussquote" },
+      { value: "0", label: "Vergessene Follow-ups" },
+    ],
+    ansatzHeadline: "Technologie + Strategie",
+    ansatzText: "Automatisierung allein reicht nicht. Ich baue zuerst den richtigen Prozess – dann automatisiere ich ihn. CRM-Setup, Workflow-Design und Team-Training aus einer Hand. Kein Tool-Chaos, sondern ein System das funktioniert.",
+    relevanteCases: ["coaching-skalierung", "dubai-real-estate"],
+    relevanteLeistungen: ["sales-vertriebsprozesse", "operations-automatisierung"],
+    faqs: [
+      { frage: "Welches CRM eignet sich am besten?", antwort: "Das hängt von deiner Teamgröße und deinem Budget ab. Ich arbeite mit HubSpot, Pipedrive, Close und anderen. Wir finden das richtige Tool für dein Business." },
+      { frage: "Kann man Vertrieb wirklich automatisieren?", antwort: "Die Beziehung nicht – aber alles drumherum. CRM-Pflege, Follow-ups, Reporting, Lead-Zuweisung. Dein Vertrieb verkauft, das System erledigt den Rest." },
+      { frage: "Wie lange dauert die Implementierung?", antwort: "Typischerweise 4-8 Wochen für ein komplettes CRM-Setup mit Automatisierungen. Erste Quick Wins oft schon in Woche 1." },
+      { frage: "Was wenn mein Team das nicht annimmt?", antwort: "Deshalb ist Training Teil jeder Implementierung. Wir bauen das System gemeinsam mit dem Team auf – nicht an ihm vorbei." },
+    ],
+    ctaHeadline: "Dein Vertrieb verdient bessere Werkzeuge.",
+    ctaSubline: "Lass uns herausfinden, wo Automatisierung den größten Hebel hat.",
+  },
+  {
+    slug: "ki-automatisierung-unternehmen",
+    metaTitle: "KI-Automatisierung für Unternehmen – Mehr Output, weniger Kosten | Skalator",
+    metaDescription: "KI-Automatisierung für B2B: Prozesse automatisieren mit ChatGPT, Voice AI und Workflow-Tools. 30-50% Kostenreduktion. Praxiserprobt.",
+    label: "KI Automatisierung",
+    headline: "KI-Automatisierung. Nicht Hype. Sondern Ergebnisse.",
+    highlightWord: "Ergebnisse.",
+    subline: "Wie Unternehmen KI heute schon nutzen, um 30-50% operative Kosten zu senken.",
+    introHeadline: "KI ist kein Spielzeug. Es ist ein Werkzeug.",
+    introText: "Während alle über ChatGPT reden, nutzen kluge Unternehmen KI bereits, um echte Probleme zu lösen. Nicht als Experiment, sondern als festen Bestandteil ihrer Prozesse. Voice-AI beantwortet Anrufe 24/7. Chatbots qualifizieren Leads automatisch. KI-Workflows ersetzen stundenlanges Copy-Paste zwischen Systemen. Das ist kein Zukunftsszenario – das ist heute möglich und profitabel.",
+    problemHeadline: "Warum die meisten mit KI scheitern",
+    problems: [
+      "Kein klarer Use Case – KI wird als Spielerei eingeführt statt als Business-Tool",
+      "Fehlende Integration in bestehende Systeme und Workflows",
+      "Unrealistische Erwartungen – KI ersetzt keine Strategie",
+      "Datenschutz-Bedenken ohne klare DSGVO-konforme Lösung",
+      "Keine Messung des tatsächlichen ROI",
+    ],
+    loesungHeadline: "KI-Automatisierung die sich rechnet",
+    loesungText: "Konkrete KI-Anwendungen mit messbarem Business Impact:",
+    loesungPoints: [
+      { title: "Voice AI", desc: "KI-Telefonassistenten die Anrufe entgegennehmen, qualifizieren und Termine buchen. 24/7 erreichbar, null verpasste Aufträge." },
+      { title: "Workflow-Automatisierung", desc: "KI-gestützte Workflows mit n8n und Make.com die manuelle Dateneingabe, Reporting und System-Synchronisation automatisieren." },
+      { title: "Chatbots & Lead-Qualifizierung", desc: "Intelligente Chatbots auf deiner Website die Besucher in qualifizierte Leads verwandeln – rund um die Uhr." },
+      { title: "Content & Dokumentation", desc: "KI-gestützte Erstellung von SOPs, Angeboten und Reportings. Stunden werden zu Minuten." },
+    ],
+    stats: [
+      { value: "30-50%", label: "Kostenreduktion" },
+      { value: "24/7", label: "Erreichbarkeit" },
+      { value: "80%", label: "Weniger manuelle Arbeit" },
+    ],
+    ansatzHeadline: "Pragmatisch statt theoretisch",
+    ansatzText: "Ich implementiere keine KI um der KI willen. Jede Implementierung startet mit einer klaren Business-Frage: Was kostet dieser Prozess heute? Was spart KI ein? Wenn sich das rechnet, bauen wir es. Wenn nicht, lassen wir es. Keine Buzzwords, keine Spielereien – nur messbarer Impact.",
+    relevanteCases: ["gartenbau-voice-ai", "inkasso-automatisierung"],
+    relevanteLeistungen: ["operations-automatisierung"],
+    faqs: [
+      { frage: "Ist KI-Automatisierung DSGVO-konform?", antwort: "Ja, wenn sie richtig implementiert wird. Wir nutzen europäische Server, verschlüsselte Datenübertragung und DSGVO-konforme Tools." },
+      { frage: "Ab welcher Unternehmensgröße lohnt sich KI?", antwort: "Schon ab 2-3 Mitarbeitern kann KI-Automatisierung Zeit und Kosten sparen. Je mehr repetitive Prozesse, desto höher der Hebel." },
+      { frage: "Welche Prozesse kann KI automatisieren?", antwort: "Telefonanrufe, E-Mail-Bearbeitung, Dateneingabe, Reportings, Lead-Qualifizierung, Terminplanung, Dokumentenerstellung und vieles mehr." },
+      { frage: "Ersetzt KI meine Mitarbeiter?", antwort: "Nein. KI ersetzt repetitive Aufgaben, nicht Menschen. Dein Team kann sich auf das konzentrieren, was wirklich Wert schafft: Kundenbeziehungen, Strategie und Kreativität." },
+    ],
+    ctaHeadline: "KI sinnvoll einsetzen. Nicht nur darüber reden.",
+    ctaSubline: "Lass uns herausfinden, welche KI-Automatisierung deinem Unternehmen am meisten bringt.",
+  },
+  {
+    slug: "business-skalierung",
+    metaTitle: "Business skalieren – Planbar wachsen ohne Chaos | Skalator",
+    metaDescription: "Business skalieren ohne Chaos: Systeme für planbares Wachstum. Marketing, Vertrieb, Operations und Recruiting – alles aus einer Hand.",
+    label: "Business Skalierung",
+    headline: "Business skalieren. Ohne Chaos. Ohne Burnout.",
+    highlightWord: "Chaos.",
+    subline: "Warum Wachstum die meisten Unternehmen zerstört – und wie du es richtig machst.",
+    introHeadline: "Wachstum ist nicht das Problem. Wachstum ohne System ist das Problem.",
+    introText: "Mehr Kunden klingen gut – bis dein Team nicht mehr hinterherkommt. Bis die Qualität leidet. Bis du als Geschäftsführer 70 Stunden die Woche arbeitest. Skalierung bedeutet nicht einfach 'mehr'. Es bedeutet: Mehr Umsatz mit proportional weniger Aufwand. Mehr Output mit dem gleichen Team. Mehr Kontrolle statt mehr Chaos. Das geht nur mit Systemen.",
+    problemHeadline: "Warum Wachstum ohne Systeme scheitert",
+    problems: [
+      "Mehr Kunden = mehr Probleme, weil Prozesse nicht mitwachsen",
+      "Das Geschäft hängt am Geschäftsführer – Urlaub ist unmöglich",
+      "Qualität sinkt mit jedem neuen Kunden",
+      "Mitarbeiter sind überarbeitet, Fluktuation steigt",
+      "Kein Überblick über Zahlen – Entscheidungen aus dem Bauch",
+    ],
+    loesungHeadline: "So skalierst du dein Business richtig",
+    loesungText: "Die vier Säulen planbarer Skalierung:",
+    loesungPoints: [
+      { title: "Kundengewinnung", desc: "Planbare Systeme für Leadgenerierung und Neukundengewinnung – unabhängig von Empfehlungen." },
+      { title: "Vertrieb", desc: "Strukturierte Verkaufsprozesse mit CRM, Pipeline-Management und automatisierten Follow-ups." },
+      { title: "Operations", desc: "Automatisierte Prozesse die Wachstum tragen. Weniger manuelle Arbeit, weniger Fehler, mehr Output." },
+      { title: "Team", desc: "Systematisches Recruiting und Onboarding. Die richtigen Menschen finden und halten." },
+    ],
+    stats: [
+      { value: "3x", label: "Umsatzwachstum" },
+      { value: "-40%", label: "Operative Kosten" },
+      { value: "50%", label: "Weniger Arbeitsstunden" },
+    ],
+    ansatzHeadline: "Ein Partner für alles",
+    ansatzText: "Die meisten Unternehmen haben 5 verschiedene Dienstleister für Marketing, Sales, IT, HR und Prozesse. Das Ergebnis: Silodenken, Kommunikationsprobleme, keine Gesamtstrategie. Bei Skalator bekommst du alles aus einer Hand. Ein Ansprechpartner. Eine Strategie. Ein System das zusammenarbeitet.",
+    relevanteCases: ["coaching-skalierung", "inkasso-automatisierung"],
+    relevanteLeistungen: ["marketing-leadgenerierung", "sales-vertriebsprozesse", "operations-automatisierung", "recruiting-teamaufbau"],
+    faqs: [
+      { frage: "Ab wann sollte ich über Skalierung nachdenken?", antwort: "Wenn du merkst, dass Wachstum Schmerzen verursacht statt Freude. Wenn du als Geschäftsführer der Engpass bist. Wenn dein Team am Limit arbeitet." },
+      { frage: "Wie lange dauert es, ein Business zu skalieren?", antwort: "Die ersten Systeme stehen in 4-8 Wochen. Echte Skalierung ist ein Prozess über 3-6 Monate. Aber erste Resultate kommen schnell." },
+      { frage: "Was kostet Skalierung?", antwort: "Weniger als die Kosten des Nicht-Skalierens. Typisch: Die Investition rechnet sich innerhalb von 2-3 Monaten durch Effizienzgewinne und Umsatzwachstum." },
+      { frage: "Muss ich alles auf einmal machen?", antwort: "Nein. Wir identifizieren den größten Hebel und starten dort. Schritt für Schritt, nicht alles auf einmal." },
+    ],
+    ctaHeadline: "Bereit für kontrollierbares Wachstum?",
+    ctaSubline: "Lass uns gemeinsam den Grundstein für planbare Skalierung legen.",
+  },
+];
