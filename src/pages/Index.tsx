@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Cards from "@/components/Cards";
 import Services from "@/components/Services";
@@ -8,13 +7,11 @@ import CaseStudies from "@/components/CaseStudies";
 import Philosophy from "@/components/Philosophy";
 import FAQ from "@/components/FAQ";
 import CallToAction from "@/components/CallToAction";
-import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       <main>
         <Hero />
         <Cards />
@@ -26,7 +23,6 @@ const Index = () => {
         <FAQ />
         <CallToAction />
       </main>
-      <Footer />
       <CookieBanner />
     </div>
   );
