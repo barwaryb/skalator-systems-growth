@@ -80,6 +80,15 @@ const Footer = () => {
                 <li><Link to="/cases" className="text-sm text-white/40 hover:text-white transition-colors">Cases</Link></li>
                 <li><Link to="/ueber-mich" className="text-sm text-white/40 hover:text-white transition-colors">Über mich</Link></li>
               </ul>
+              <h4 className="text-sm font-semibold text-white mb-3 mt-6">Themen</h4>
+              <ul className="space-y-2">
+                <li><Link to="/marketing-automatisierung" className="text-sm text-white/40 hover:text-white transition-colors">Marketing Automatisierung</Link></li>
+                <li><Link to="/neukunden-gewinnung" className="text-sm text-white/40 hover:text-white transition-colors">Neukundengewinnung</Link></li>
+                <li><Link to="/leadgenerierung-b2b" className="text-sm text-white/40 hover:text-white transition-colors">Leadgenerierung B2B</Link></li>
+                <li><Link to="/vertrieb-automatisieren" className="text-sm text-white/40 hover:text-white transition-colors">Vertrieb automatisieren</Link></li>
+                <li><Link to="/ki-automatisierung-unternehmen" className="text-sm text-white/40 hover:text-white transition-colors">KI-Automatisierung</Link></li>
+                <li><Link to="/business-skalierung" className="text-sm text-white/40 hover:text-white transition-colors">Business Skalierung</Link></li>
+              </ul>
             </div>
 
             {/* Rechtliches */}

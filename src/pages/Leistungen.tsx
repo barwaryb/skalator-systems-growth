@@ -95,6 +95,34 @@ const Leistungen = () => {
                 </motion.div>
               ))}
             </div>
+        </motion.div>
+
+          {/* Themen-Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-24"
+          >
+            <h3 className="text-sm font-semibold text-white/40 uppercase tracking-wide mb-4">Relevante Themen</h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { slug: "marketing-automatisierung", label: "Marketing Automatisierung" },
+                { slug: "neukunden-gewinnung", label: "Neukundengewinnung" },
+                { slug: "leadgenerierung-b2b", label: "Leadgenerierung B2B" },
+                { slug: "vertrieb-automatisieren", label: "Vertrieb automatisieren" },
+                { slug: "ki-automatisierung-unternehmen", label: "KI-Automatisierung" },
+                { slug: "business-skalierung", label: "Business Skalierung" },
+              ].map(t => (
+                <Link
+                  key={t.slug}
+                  to={`/${t.slug}`}
+                  className="px-4 py-2 rounded-full bg-white/[0.05] border border-white/10 text-sm text-white/60 hover:text-white hover:border-accent/30 transition-colors"
+                >
+                  {t.label}
+                </Link>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
