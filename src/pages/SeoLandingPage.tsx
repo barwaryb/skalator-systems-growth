@@ -21,6 +21,55 @@ const SeoLandingPage = () => {
     if (page) {
       document.title = page.metaTitle;
       document.querySelector('meta[name="description"]')?.setAttribute("content", page.metaDescription);
+
+      // JSON-LD Structured Data
+      const existingScripts = document.querySelectorAll('script[data-seo-jsonld]');
+      existingScripts.forEach(s => s.remove());
+
+      const breadcrumbLD = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://skalator.de/" },
+          { "@type": "ListItem", "position": 2, "name": page.label, "item": `https://skalator.de/${page.slug}` },
+        ]
+      };
+
+      const faqLD = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": page.faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.frage,
+          "acceptedAnswer": { "@type": "Answer", "text": faq.antwort }
+        }))
+      };
+
+      const serviceLD = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": page.label,
+        "description": page.metaDescription,
+        "provider": {
+          "@type": "Person",
+          "name": "Botan Barwary",
+          "url": "https://skalator.de/ueber-mich"
+        },
+        "areaServed": { "@type": "Place", "name": "DACH" },
+        "url": `https://skalator.de/${page.slug}`
+      };
+
+      [breadcrumbLD, faqLD, serviceLD].forEach(data => {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.setAttribute('data-seo-jsonld', 'true');
+        script.textContent = JSON.stringify(data);
+        document.head.appendChild(script);
+      });
+
+      return () => {
+        document.querySelectorAll('script[data-seo-jsonld]').forEach(s => s.remove());
+      };
     }
   }, [page]);
 
