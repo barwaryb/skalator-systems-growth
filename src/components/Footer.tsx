@@ -9,11 +9,6 @@ const socialLinks = [
   { icon: Mail, href: "mailto:info@skalator.de", label: "E-Mail" },
 ];
 
-const legalLinks = [
-  { label: "Impressum", to: "/impressum" },
-  { label: "Datenschutz", to: "/datenschutz" },
-];
-
 const Footer = () => {
   return (
     <footer className="relative bg-[#0a0a0a] overflow-hidden">
@@ -34,80 +29,75 @@ const Footer = () => {
 
       <div className="section-container py-12 md:py-16 relative z-10">
         <div className="flex flex-col gap-10">
-          {/* Main Footer Row */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          {/* Top: Logo + Nav Columns */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {/* Logo */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
+              className="col-span-2 md:col-span-1"
             >
-              <div className="flex items-center gap-2 md:gap-3">
+              <Link to="/" className="flex items-center gap-2 md:gap-3">
                 <img src={skalatorLogo} alt="Skalator Logo" className="h-8 sm:h-10 md:h-12 w-auto" />
-                <span className="font-display text-xl md:text-2xl font-bold uppercase tracking-tight text-white">
-                  Skalator
-                </span>
+                <span className="font-display text-xl md:text-2xl font-bold uppercase tracking-tight text-white">Skalator</span>
+              </Link>
+              <p className="text-white/40 text-sm mt-2">Growth Operator</p>
+              {/* Social */}
+              <div className="flex items-center gap-2 mt-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-accent-foreground transition-all duration-300"
+                  >
+                    <social.icon className="w-4 h-4" />
+                  </a>
+                ))}
               </div>
-              <p className="text-white/40 text-sm mt-1">Growth Operator</p>
             </motion.div>
 
-            {/* Social Links */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex items-center gap-3"
-            >
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-accent-foreground transition-all duration-300"
-                >
-                  <social.icon className="w-5 h-5" />
-                </motion.a>
-              ))}
-            </motion.div>
+            {/* Leistungen */}
+            <div>
+              <h4 className="text-sm font-semibold text-white mb-3">Leistungen</h4>
+              <ul className="space-y-2">
+                <li><Link to="/leistungen/marketing-leadgenerierung" className="text-sm text-white/40 hover:text-white transition-colors">Marketing & Leads</Link></li>
+                <li><Link to="/leistungen/sales-vertriebsprozesse" className="text-sm text-white/40 hover:text-white transition-colors">Sales & Vertrieb</Link></li>
+                <li><Link to="/leistungen/operations-automatisierung" className="text-sm text-white/40 hover:text-white transition-colors">Operations & Automation</Link></li>
+                <li><Link to="/leistungen/recruiting-teamaufbau" className="text-sm text-white/40 hover:text-white transition-colors">Recruiting & Team</Link></li>
+              </ul>
+            </div>
 
-            {/* Legal Links */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-center gap-6"
-            >
-              {legalLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.to}
-                  className="text-sm text-white/40 hover:text-white transition-colors duration-300"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </motion.div>
+            {/* Seiten */}
+            <div>
+              <h4 className="text-sm font-semibold text-white mb-3">Seiten</h4>
+              <ul className="space-y-2">
+                <li><Link to="/leistungen" className="text-sm text-white/40 hover:text-white transition-colors">Leistungen</Link></li>
+                <li><Link to="/cases" className="text-sm text-white/40 hover:text-white transition-colors">Cases</Link></li>
+                <li><Link to="/ueber-mich" className="text-sm text-white/40 hover:text-white transition-colors">Über mich</Link></li>
+              </ul>
+            </div>
+
+            {/* Rechtliches */}
+            <div>
+              <h4 className="text-sm font-semibold text-white mb-3">Rechtliches</h4>
+              <ul className="space-y-2">
+                <li><Link to="/impressum" className="text-sm text-white/40 hover:text-white transition-colors">Impressum</Link></li>
+                <li><Link to="/datenschutz" className="text-sm text-white/40 hover:text-white transition-colors">Datenschutz</Link></li>
+              </ul>
+            </div>
           </div>
 
           {/* Copyright */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="border-t border-white/10 pt-8 text-center"
-          >
+          <div className="border-t border-white/10 pt-8 text-center">
             <p className="text-sm text-white/30">
               © 2025 · Botan Barwary · <span className="font-serif italic">Skalator</span> · DACH
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
     </footer>

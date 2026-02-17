@@ -4,7 +4,7 @@
 Skalator ist ein Business Consulting Service von Botan Barwary. Der Name ist eine Kombination aus "Skalierung" und "Automatisierung". 
 
 ## Gründer
-Botan Barwary ist Growth Operator und Business Consultant mit Sitz in Ettlingen bei Karlsruhe, Deutschland. Er hat über 5 Jahre Erfahrung und mehr als 20 Business-Systeme gebaut.
+Botan Barwary ist Growth Operator und Business Consultant mit Sitz in Ettlingen bei Karlsruhe, Deutschland. Er hat über 5 Jahre Erfahrung, 150+ Prozesse automatisiert und 30M+ € Kundenumsatz generiert.
 
 ## Philosophie
 - "Die meisten Unternehmen haben kein Wachstumsproblem. Sie haben ein Systemproblem."
@@ -12,46 +12,48 @@ Botan Barwary ist Growth Operator und Business Consultant mit Sitz in Ettlingen 
 - "Struktur schlägt Motivation."
 - "Was nicht skaliert, ist kein System."
 
-## Services
+## Leistungen
 
-### 1. Marketing & Leadgenerierung
-Planbare Leadgenerierung ohne Agentur-Abhängigkeit. Sichtbarkeit aufbauen, die Anfragen bringt.
+### 1. Marketing & Leadgenerierung (/leistungen/marketing-leadgenerierung)
+Planbare Leadgenerierung: Positionierung, Ad Creatives, Meta & Google Ads, Landing Pages, Funnel-Aufbau, Lead-Magnete, Tracking & laufende Optimierung.
 
-### 2. Sales & Vertriebsprozesse
-Systematische Vertriebsprozesse für höhere Abschlussquoten und kürzere Verkaufszyklen.
+### 2. Sales & Vertriebsprozesse (/leistungen/sales-vertriebsprozesse)
+Systematische Vertriebsprozesse: Sales-Prozess-Design, CRM-Setup, Pipeline-Management, automatisierte Follow-ups, Verkaufsskripte, Sales-Reporting.
 
-### 3. Operations & Automatisierung
-Prozesse optimieren und automatisieren. Typische Ergebnisse: 30-40% Kostenreduktion, 50% mehr Produktivität pro Mitarbeiter.
+### 3. Operations & Automatisierung (/leistungen/operations-automatisierung)
+Prozesse optimieren und automatisieren mit n8n, Make.com und KI. Typische Ergebnisse: 30-40% Kostenreduktion, 50% mehr Produktivität.
 
-### 4. Recruiting & Teamaufbau
-Systematisches Recruiting für nachhaltiges Wachstum. Die richtigen Mitarbeiter finden und halten.
+### 4. Recruiting & Teamaufbau (/leistungen/recruiting-teamaufbau)
+Social Recruiting über Meta Ads, Bewerber-Funnel, Karriereseiten, automatisierte Qualifizierung und Bewerbermanagement.
+
+## Fallstudien (/cases)
+
+### Immobilien-Leadgenerierung (/cases/immobilien-leadgenerierung)
+Von unregelmäßigen Anfragen zu planbaren Leads. CPL um 60% gesenkt, ROI positiv ab Monat 2.
+
+### Inkasso-Automatisierung (/cases/inkasso-automatisierung)
++40% Effizienz durch End-to-End Workflow-Automatisierung. Fehlerquote um 80% reduziert. Gleiches Team.
+
+### Dubai Real Estate (/cases/dubai-real-estate)
+Von Null auf kontinuierlichen Lead-Strom in 6 Wochen. Kompletter Marktaufbau für DACH-Investoren.
+
+### Handwerk Recruiting (/cases/handwerk-recruiting)
+15+ qualifizierte Bewerbungen pro Monat statt null. 3 Einstellungen in 6 Wochen. Cost-per-Application unter 30€.
+
+### Coaching-Skalierung (/cases/coaching-skalierung)
+Umsatz verdreifacht in 4 Monaten. Arbeitsstunden halbiert. Planbare Neukundengewinnung.
+
+### Gartenbau Voice AI (/cases/gartenbau-voice-ai)
+24/7 erreichbar durch Voice-AI Telefonassistent. Kein verpasster Auftrag mehr. Terminbuchung vollautomatisch.
+
+## Über Botan Barwary (/ueber-mich)
+Growth Operator & Gründer von Skalator. B.Sc. International IT Business (Hochschule Karlsruhe), Data Analyst bei EnBW, Sales Development Engineer bei Cognex Corporation. Host des Podcasts "Einfach Machen" mit 500+ Folgen.
 
 ## Zielgruppe
-Unternehmer und Geschäftsführer im DACH-Raum (Deutschland, Österreich, Schweiz), die:
-- Bereits ein funktionierendes Geschäft haben
-- An Kapazitätsgrenzen stoßen
-- Wachstum ohne Chaos suchen
-- Unabhängig von Agenturen werden wollen
-
-## Was Skalierung bedeutet
-- Mehr Umsatz bei gleichen Kosten
-- Bessere Leads durch gezielte Ansprache
-- Kürzere Verkaufszyklen durch saubere Systeme
-- Mehr Abschlüsse ohne mehr Aufwand
-
-## Was Automatisierung bringt
-- 30-40% Kostenreduktion
-- 50% Produktivitätssteigerung pro Mitarbeiter
-- Weniger Fehler, mehr Output
-- Bestehende Teams können mehr leisten
+Unternehmer und Geschäftsführer im DACH-Raum (Deutschland, Österreich, Schweiz), die planbar wachsen wollen.
 
 ## Kontakt
 - Website: https://skalator.de
 - E-Mail: kontakt@skalator.de
 - Standort: Wilhelmstraße 17, 76275 Ettlingen, Deutschland
 - Kostenloses Erstgespräch verfügbar
-
-## Zusammenarbeit
-1. Erstgespräch: Kostenlose Analyse der aktuellen Situation
-2. Strategie: Maßgeschneiderter Plan mit klaren Systemen
-3. Umsetzung: Gemeinsame Implementierung, erste Ergebnisse in 2-4 Wochen

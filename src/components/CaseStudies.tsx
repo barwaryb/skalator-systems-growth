@@ -1,12 +1,14 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import casesVisual from "@/assets/cases-visual.png";
 
 const cases = [
   {
     id: "01",
+    slug: "immobilien-leadgenerierung",
     industry: "Immobilien",
     problem: "Unregelmäßige Anfragen. Kein System.",
     solution: "Lead-Funnel mit automatisierter Qualifizierung.",
@@ -14,6 +16,7 @@ const cases = [
   },
   {
     id: "02",
+    slug: "inkasso-automatisierung",
     industry: "Inkasso",
     problem: "Manuelle Prozesse. Hohe Fehlerquote.",
     solution: "End-to-End Workflow-Automatisierung.",
@@ -21,6 +24,7 @@ const cases = [
   },
   {
     id: "03",
+    slug: "dubai-real-estate",
     industry: "Dubai Real Estate",
     problem: "Keine Präsenz. Null Leads.",
     solution: "Kompletter Aufbau: Ads, Website, Funnel.",
@@ -145,6 +149,7 @@ const CaseItem = ({ item, index }: { item: typeof cases[0]; index: number }) => 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
   return (
+    <Link to={`/cases/${item.slug}`}>
     <motion.div
       ref={ref}
       style={{ x, opacity }}
@@ -187,6 +192,7 @@ const CaseItem = ({ item, index }: { item: typeof cases[0]; index: number }) => 
         </motion.div>
       </div>
     </motion.div>
+    </Link>
   );
 };
 

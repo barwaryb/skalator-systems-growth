@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Shield, User, Cookie, Server, FileText, Scale } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const sections = [
   {
@@ -89,7 +87,7 @@ Stand: Juli 2025`
 const Datenschutz = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden">
-      <Header />
+      
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-bl from-accent/8 via-accent/3 to-transparent rounded-full blur-3xl" />
@@ -102,7 +100,7 @@ const Datenschutz = () => {
         backgroundSize: '60px 60px'
       }} />
 
-      <div className="section-container py-16 md:py-24 relative z-10">
+      <div className="section-container pt-28 md:pt-36 pb-16 md:pb-24 relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -162,7 +160,7 @@ const Datenschutz = () => {
           ))}
         </div>
       </div>
-      <Footer />
+      
     </div>
   );
 };

@@ -283,7 +283,7 @@ const ServiceItem = ({
                       </motion.div>
                       
                       <Button variant="outline" size="lg" asChild className="mt-6 border-white/20 text-white hover:bg-white/10 hover:border-white/30 group/btn">
-                        <a href="#kontakt" className="flex items-center gap-2">
+                        <a href={`/leistungen/${service.id === "001" ? "marketing-leadgenerierung" : service.id === "002" ? "sales-vertriebsprozesse" : service.id === "003" ? "operations-automatisierung" : "recruiting-teamaufbau"}`} className="flex items-center gap-2">
                           Mehr erfahren
                           <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                         </a>
