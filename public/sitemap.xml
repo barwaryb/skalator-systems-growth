@@ -94,7 +94,44 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Über mich -->
+  <!-- SEO Themen-Landing-Pages -->
+  <url>
+    <loc>https://skalator.de/marketing-automatisierung</loc>
+    <lastmod>2025-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://skalator.de/neukunden-gewinnung</loc>
+    <lastmod>2025-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://skalator.de/leadgenerierung-b2b</loc>
+    <lastmod>2025-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://skalator.de/vertrieb-automatisieren</loc>
+    <lastmod>2025-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://skalator.de/ki-automatisierung-unternehmen</loc>
+    <lastmod>2025-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://skalator.de/business-skalierung</loc>
+    <lastmod>2025-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://skalator.de/ueber-mich</loc>
     <lastmod>2025-02-17</lastmod>

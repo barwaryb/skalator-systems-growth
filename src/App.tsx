@@ -15,6 +15,7 @@ import CaseDetail from "./pages/CaseDetail";
 import Leistungen from "./pages/Leistungen";
 import ServiceDetail from "./pages/ServiceDetail";
 import UeberMich from "./pages/UeberMich";
+import SeoLandingPage from "./pages/SeoLandingPage";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,12 @@ const App = () => (
           <Route path="/leistungen" element={<Leistungen />} />
           <Route path="/leistungen/:slug" element={<ServiceDetail />} />
           <Route path="/ueber-mich" element={<UeberMich />} />
+          <Route path="/marketing-automatisierung" element={<SeoLandingPage />} />
+          <Route path="/neukunden-gewinnung" element={<SeoLandingPage />} />
+          <Route path="/leadgenerierung-b2b" element={<SeoLandingPage />} />
+          <Route path="/vertrieb-automatisieren" element={<SeoLandingPage />} />
+          <Route path="/ki-automatisierung-unternehmen" element={<SeoLandingPage />} />
+          <Route path="/business-skalierung" element={<SeoLandingPage />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
           <Route path="*" element={<NotFound />} />
