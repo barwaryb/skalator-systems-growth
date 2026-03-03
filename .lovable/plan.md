@@ -1,36 +1,93 @@
 
+# Pre-Rendering: Statische HTML-Dateien fuer alle Routen
 
-# Kunden-Websites in Case Studies verlinken
+## Warum ist das noetig?
 
-## Was wird gemacht
+Aktuell liefert der Server fuer **jede URL** dieselbe `index.html` mit den Homepage-Meta-Tags. Social-Media-Bots (LinkedIn, WhatsApp) und manche Suchmaschinen fuehren kein JavaScript aus und sehen daher immer nur den Homepage-Titel -- egal welche Seite geteilt wird. Die bisherige `useEffect`-basierte Meta-Tag-Aenderung funktioniert nur im Browser.
 
-Die Case Studies erhalten ein neues optionales Feld fuer die Kunden-Website, damit Besucher die Referenz direkt aufrufen koennen. Das staerkt die Glaubwuerdigkeit und verbessert SEO durch ausgehende Links.
+## Was wird gebaut?
 
-## Aenderungen
+Ein **Vite Build-Plugin**, das beim `vite build` automatisch fuer jede Route eine eigene `index.html` mit den korrekten Meta-Tags generiert. Keine externen Dienste, keine neue Infrastruktur.
 
-### 1. CaseData Interface erweitern (`src/data/casesData.ts`)
-- Neues optionales Feld `kundenWebsite?: string` zum Interface hinzufuegen
-- Dubai-Case aktualisieren: `kundenWebsite: "https://bertlein-partners.com"` setzen
-- Optional: Weitere Cases mit Websites ergaenzen, sobald du mir sagst welche dazugehoeren
+## Neue Dateien
 
-### 2. Case-Detailseite anpassen (`src/pages/CaseDetail.tsx`)
-- Unterhalb der Loesung oder im Zeitraum-Bereich einen Link zur Kunden-Website anzeigen (nur wenn vorhanden)
-- Darstellung: dezenter Link mit externem-Link-Icon, oeffnet in neuem Tab
-- `rel="noopener noreferrer"` fuer Sicherheit, kein `nofollow` (bewusst Link-Juice weitergeben)
+### 1. `src/data/routesMeta.ts` -- Zentrale Meta-Daten-Map
 
-### 3. Case-Teaser optional erweitern (`src/components/CaseTeaser.tsx`)
-- Optional den Kundennamen anzeigen (z.B. "Bertlein Partners" statt nur "Immobilien / International")
+Sammelt alle Meta-Informationen fuer ca. 20 Routen in einem Array:
 
-## Konkrete Zuordnung bisher
+```text
+Route                              | title, description, og:tags, canonical
+-----------------------------------|----------------------------------------
+/                                  | (Homepage-Defaults aus index.html)
+/cases                             | Manuell definiert
+/cases/immobilien-leadgenerierung  | Aus casesData.ts
+/cases/dubai-real-estate           | Aus casesData.ts
+/cases/inkasso-automatisierung     | Aus casesData.ts
+/cases/handwerk-recruiting         | Aus casesData.ts
+/cases/coaching-skalierung         | Aus casesData.ts
+/cases/gartenbau-voice-ai          | Aus casesData.ts
+/leistungen                        | Manuell definiert
+/leistungen/marketing-...          | Aus servicesData.ts
+/leistungen/sales-...              | Aus servicesData.ts
+/leistungen/operations-...         | Aus servicesData.ts
+/leistungen/recruiting-...         | Aus servicesData.ts
+/ueber-mich                        | Manuell definiert
+/marketing-automatisierung         | Aus seoPageData.ts
+/neukunden-gewinnung               | Aus seoPageData.ts
+/leadgenerierung-b2b               | Aus seoPageData.ts
+/vertrieb-automatisieren           | Aus seoPageData.ts
+/ki-automatisierung-unternehmen    | Aus seoPageData.ts
+/business-skalierung               | Aus seoPageData.ts
+/impressum                         | Manuell definiert
+/datenschutz                       | Manuell definiert
+```
 
-| Case | Kunden-Website |
-|------|---------------|
-| Dubai Real Estate | bertlein-partners.com |
-| (weitere?) | elenas-service.de -- Zuordnung noch offen |
+Jeder Eintrag enthaelt: `path`, `title`, `description`, `ogTitle`, `ogDescription`, `ogUrl`, `canonical`.
 
-## Technische Details
+### 2. `vite-plugin-static-meta.ts` -- Custom Vite Plugin
 
-- Das Feld ist optional (`?`), sodass bestehende Cases ohne Website weiterhin funktionieren
-- Der Link wird nur auf der Detailseite angezeigt, nicht in der Uebersicht
-- Externe Links bekommen `target="_blank"` und `rel="noopener noreferrer"`
+- Laeuft nur beim Build (nicht im Dev-Modus)
+- Nutzt den `closeBundle` Hook
+- Liest die gebaute `dist/index.html` als Template
+- Fuer jede Route aus `routesMeta`:
+  - Ersetzt `<title>` mit dem seitenspezifischen Titel
+  - Ersetzt `<meta name="description">` 
+  - Ersetzt `<meta property="og:title">`, `og:description`, `og:url`
+  - Ersetzt `<link rel="canonical">`
+  - Schreibt das Ergebnis nach `dist/{route}/index.html`
+- Beispiel: Route `/cases/dubai-real-estate` erzeugt `dist/cases/dubai-real-estate/index.html`
 
+## Geaenderte Dateien
+
+### 3. `index.html` -- Platzhalter einfuegen
+
+Die bestehenden Meta-Tags bleiben als Defaults (fuer die Homepage) erhalten. Das Plugin findet und ersetzt sie per String-Matching (z.B. den Inhalt von `<title>...</title>` und die `content`-Attribute der Meta-Tags).
+
+Keine Platzhalter-Kommentare noetig -- das Plugin ersetzt direkt die vorhandenen Tag-Inhalte.
+
+### 4. `vite.config.ts` -- Plugin registrieren
+
+Das neue Plugin wird in die `plugins`-Liste aufgenommen, sodass es automatisch beim Build laeuft.
+
+## Technischer Ablauf
+
+```text
+vite build
+  |
+  1. Normaler React-Build -> dist/index.html (SPA mit Homepage-Meta)
+  |
+  2. closeBundle Hook: Plugin startet
+     |
+     a. Liest dist/index.html als Template-String
+     b. Iteriert ueber routesMeta-Array (ca. 20 Eintraege)
+     c. Pro Route: String-Replace fuer title, description, og:*, canonical
+     d. Schreibt dist/{route}/index.html mit angepasstem <head>
+  |
+  3. Ergebnis: 20+ HTML-Dateien mit korrekten Meta-Tags
+```
+
+## Was sich fuer Nutzer aendert
+
+- **LinkedIn/WhatsApp/Twitter**: Beim Teilen von z.B. `skalator.de/cases/dubai-real-estate` wird sofort der richtige Titel "Dubai Real Estate -- Von Null auf Lead-Strom in 6 Wochen" und die korrekte Beschreibung angezeigt
+- **Google**: Sieht die Meta-Tags sofort ohne JavaScript rendern zu muessen
+- **SPA-Verhalten**: Bleibt komplett erhalten -- die statischen HTMLs laden nur die initiale Seite, danach uebernimmt React Router wie gewohnt
