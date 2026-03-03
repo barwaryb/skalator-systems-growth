@@ -11,6 +11,7 @@ export interface CaseData {
   metaTitle: string;
   metaDescription: string;
   keyMetrik: string;
+  kundenWebsite?: string;
 }
 
 export const casesData: CaseData[] = [
@@ -67,6 +68,7 @@ export const casesData: CaseData[] = [
     metaTitle: "Dubai Real Estate – Von Null auf Lead-Strom in 6 Wochen | Skalator",
     metaDescription: "Kompletter Marktaufbau für ein Dubai-Immobilienunternehmen: Website, Ads, Funnel – in 6 Wochen von Null auf kontinuierlichen Lead-Strom.",
     keyMetrik: "6 Wochen Live",
+    kundenWebsite: "https://bertlein-partners.com",
   },
   {
     slug: "handwerk-recruiting",

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { AlertTriangle, CheckCircle, Clock } from "lucide-react";
+import { AlertTriangle, CheckCircle, Clock, ExternalLink } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import PageCTA from "@/components/PageCTA";
 import StatCard from "@/components/StatCard";
@@ -93,19 +93,41 @@ const CaseDetail = () => {
             </div>
           </div>
 
-          {/* Zeitraum */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 bg-white/[0.03] border border-white/10 rounded-xl p-5"
-          >
-            <Clock className="w-5 h-5 text-accent" />
-            <div>
-              <span className="text-xs text-white/40 uppercase tracking-wide">Zeitraum</span>
-              <p className="text-white font-semibold">{caseItem.zeitraum}</p>
-            </div>
-          </motion.div>
+          {/* Zeitraum & Kunden-Website */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 bg-white/[0.03] border border-white/10 rounded-xl p-5 flex-1"
+            >
+              <Clock className="w-5 h-5 text-accent" />
+              <div>
+                <span className="text-xs text-white/40 uppercase tracking-wide">Zeitraum</span>
+                <p className="text-white font-semibold">{caseItem.zeitraum}</p>
+              </div>
+            </motion.div>
+
+            {caseItem.kundenWebsite && (
+              <motion.a
+                href={caseItem.kundenWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-3 bg-white/[0.03] border border-white/10 rounded-xl p-5 flex-1 hover:border-accent/30 hover:bg-white/[0.05] transition-all duration-300 group"
+              >
+                <ExternalLink className="w-5 h-5 text-accent" />
+                <div>
+                  <span className="text-xs text-white/40 uppercase tracking-wide">Kunden-Website</span>
+                  <p className="text-white font-semibold group-hover:text-accent transition-colors">
+                    {new URL(caseItem.kundenWebsite).hostname.replace("www.", "")}
+                  </p>
+                </div>
+              </motion.a>
+            )}
+          </div>
 
           {/* Weitere Cases */}
           <div>
