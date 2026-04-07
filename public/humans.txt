@@ -1,0 +1,22 @@
+/* TEAM */
+Designer: Botan Barwary
+Role: Growth Operator
+Location: Ettlingen, Deutschland
+Contact: bb@skalator.de
+Phone: +49 176 75992849
+Instagram: @bbotan95
+
+Company: Skalator
+URL: www.skalator.de
+Description: Growth- und Marketing-Automation-Beratung im DACH-Markt
+
+/* TECHNOLOGY */
+React, TypeScript, Tailwind CSS, Vite
+Framer Motion for animations
+shadcn/ui component library
+Built with Claude Code + Skalator WebSniper
+
+/* SITE */
+Last update: 2025-04-08
+Language: German
+Standards: HTML5, CSS3, ES2022
