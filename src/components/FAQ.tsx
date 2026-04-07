@@ -35,35 +35,30 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section className="py-16 md:py-24 lg:py-32 relative overflow-hidden">
-      {/* Static background */}
+    <section className="section-padding relative overflow-hidden bg-background">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-accent/3 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* Header */}
-        <motion.div 
+      <div className="section-container relative z-10">
+        <motion.div
           className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-accent text-sm font-medium tracking-wide uppercase mb-4 block">
-            FAQ
-          </span>
-          <h2 className="text-headline text-foreground mb-4">
-            Häufige Fragen
+          <span className="section-label mb-4 inline-flex">FAQ</span>
+          <h2 className="text-headline text-foreground mt-4">
+            Häufige <span className="font-serif italic text-foreground-muted">Fragen</span>
           </h2>
-          <p className="text-body-lg text-foreground-muted max-w-2xl mx-auto">
+          <p className="text-body-lg text-foreground-muted max-w-2xl mx-auto mt-4">
             Antworten auf die wichtigsten Fragen zur Zusammenarbeit.
           </p>
         </motion.div>
 
-        {/* Accordion */}
-        <motion.div 
+        <motion.div
           className="max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -79,9 +74,9 @@ const FAQ = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <AccordionItem 
+                <AccordionItem
                   value={`item-${index}`}
-                  className="modern-card border-none px-6 data-[state=open]:bg-background-soft"
+                  className="rounded-2xl border border-border/50 bg-card/50 px-6 data-[state=open]:border-accent/30 data-[state=open]:bg-card transition-all duration-300"
                 >
                   <AccordionTrigger className="text-left text-base md:text-lg font-medium text-foreground hover:text-accent hover:no-underline py-5 gap-4">
                     {faq.question}

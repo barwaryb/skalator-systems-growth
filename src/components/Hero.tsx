@@ -1,170 +1,115 @@
 import { motion } from "framer-motion";
 import { memo } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroBotan from "@/assets/hero-botan.png";
+
+const GOOGLE_CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1J8LB-Qt3tzOmUygFk9PqamtOzvM1qo1PxXQxiodbMZBa41kcDQfFBhXAH0YwOoR_0uWt4tmpe";
 
 const Hero = memo(() => {
   return (
-    <section className="min-h-[100svh] relative overflow-hidden bg-background flex flex-col" aria-label="Hero Bereich">
-      {/* Static gradient bg */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/8 via-transparent to-background will-change-auto" />
-
-      {/* Static gradient orbs - using CSS instead of JS */}
-      <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-gradient-to-br from-accent/10 to-accent/5 rounded-full blur-3xl will-change-auto" />
-      <div className="absolute bottom-40 left-10 w-96 h-96 bg-gradient-to-tr from-accent/5 to-transparent rounded-full blur-3xl will-change-auto" />
-
-      <div className="section-container relative z-10 flex-1 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 pt-24 md:pt-32 pb-12">
-        {/* Left Content */}
+    <section className="relative min-h-screen bg-background overflow-hidden" aria-label="Hero">
+      <div className="section-container flex flex-col lg:flex-row items-center gap-12 lg:gap-16 pt-28 md:pt-36 lg:pt-40 pb-20 md:pb-28 min-h-screen">
+        {/* Left: Text */}
         <div className="flex-1">
-          {/* Label */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-6 md:mb-8"
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-xs md:text-sm font-semibold text-accent tracking-wide uppercase">
-              <motion.span 
-                animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-2 bg-accent rounded-full" 
-              />
-              Growth Operator
-            </span>
-          </motion.div>
-
-          {/* Headline with stagger */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-display font-bold text-foreground mb-4 md:mb-6 max-w-4xl"
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-display text-white mb-8"
           >
-            Die meisten Unternehmen haben kein{" "}
-            <motion.span 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="font-serif italic text-foreground-muted"
-            >
-              Wachstumsproblem.
-            </motion.span>
+            Von Stillstand zu{" "}
+            <em className="font-serif not-italic text-white/40">
+              skalierbarem Wachstum.
+            </em>
           </motion.h1>
-          
-          <motion.h2
+
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="text-body-lg text-white/50 max-w-xl mb-10"
+          >
+            Skalator baut Systeme für den Mittelstand — mit Strukturen im Vertrieb, Marketing und Operations,
+            die Wachstum tragen. Keine Theorie. Funktionierende Systeme.
+          </motion.p>
+
+          {/* 3D Layered Button */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="text-display font-bold mb-6 md:mb-8"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-14"
           >
-            Sie haben ein{" "}
-            <motion.span 
-              initial={{ backgroundSize: "0% 4px" }}
-              animate={{ backgroundSize: "100% 4px" }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="font-serif italic text-foreground-muted"
+            <a
+              href={GOOGLE_CALENDAR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-block"
             >
-              Systemproblem.
-            </motion.span>
-          </motion.h2>
-
-          {/* Subline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-body-lg text-foreground-muted max-w-xl mb-8 md:mb-10"
-          >
-            Ich baue Strukturen, die Wachstum aushalten. Neue Kunden. Bessere Mitarbeiter. Weniger Kosten.
-          </motion.p>
-          
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4"
-          >
-            <Button variant="accent" size="lg" asChild className="group">
-              <a href="#kontakt" className="flex items-center gap-2">
-                Zusammenarbeiten
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
-            </Button>
-            <Button variant="outline-accent" size="lg" asChild>
-              <a href="#cases">Cases ansehen</a>
-            </Button>
+              <div className="relative">
+                {/* Layer 4 - deepest shadow */}
+                <div className="absolute inset-0 translate-y-3 translate-x-1 rounded-full bg-white/5 blur-sm" />
+                {/* Layer 3 - mid shadow */}
+                <div className="absolute inset-0 translate-y-2 rounded-full bg-white/10" />
+                {/* Layer 2 - close shadow */}
+                <div className="absolute inset-0 translate-y-1 rounded-full bg-white/20" />
+                {/* Layer 1 - main button */}
+                <div className="relative flex items-center gap-4 bg-white text-black rounded-full px-8 py-4 md:px-10 md:py-5 font-medium text-sm md:text-base transition-all duration-200 group-hover:translate-y-[2px] group-hover:shadow-none group-active:translate-y-[3px]"
+                  style={{ boxShadow: '0 4px 0 rgba(255,255,255,0.3), 0 8px 0 rgba(255,255,255,0.15), 0 12px 0 rgba(255,255,255,0.05), 0 16px 30px rgba(0,0,0,0.4)' }}
+                >
+                  <span>Jetzt Erstgespräch buchen</span>
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </a>
           </motion.div>
 
-          {/* Stats with counter animation */}
+          {/* Stats */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-12 md:mt-16 pt-8 border-t border-border/50"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-wrap gap-12 md:gap-16 border-t border-white/10 pt-8"
           >
-            <div className="flex flex-wrap gap-8 md:gap-12">
-              {[
-                { value: "5+", label: "Jahre Erfahrung" },
-                { value: "20+", label: "Systeme gebaut" },
-                { value: "100%", label: "Fokus auf Resultate" },
-              ].map((stat, index) => (
-                <motion.div 
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                  className="group"
-                >
-                  <span className="block text-2xl md:text-3xl font-bold text-foreground mb-0.5 group-hover:text-accent transition-colors">
-                    {stat.value}
-                  </span>
-                  <span className="text-xs md:text-sm text-foreground-muted">
-                    {stat.label}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
+            {[
+              { value: "5+", label: "Jahre Erfahrung" },
+              { value: "20+", label: "Systeme installiert" },
+              { value: "100%", label: "Fokus auf Resultate" },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+              >
+                <span className="block text-3xl md:text-4xl font-light text-white tracking-tight mb-1">
+                  {stat.value}
+                </span>
+                <span className="text-xs text-white/40 tracking-wide">{stat.label}</span>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
 
-        {/* Right Visual */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9, x: 50 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="hidden lg:block flex-1 max-w-xl xl:max-w-2xl"
+        {/* Right: Image - vertically centered */}
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.3 }}
+          className="w-full lg:w-[42%] shrink-0 self-center"
         >
-          <div className="relative">
-            {/* Glow effect behind image */}
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5 rounded-3xl blur-2xl scale-110" />
-            <img 
-              src={heroBotan} 
-              alt="Botan Barwary - Growth Operator und Gründer von Skalator" 
-              className="relative w-full h-auto rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform duration-300 object-cover"
-              width="600"
-              height="750"
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 aspect-[3/4] max-h-[550px]">
+            <img
+              src={heroBotan}
+              alt="Botan Barwary - Growth Operator und Gründer von Skalator"
+              className="w-full h-full object-cover object-top"
               loading="eager"
-              decoding="async"
               fetchPriority="high"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-xs text-foreground-muted uppercase tracking-wider">Scroll</span>
-          <ArrowDown className="w-5 h-5 text-foreground-muted" />
-        </div>
-      </motion.div>
     </section>
   );
 });
